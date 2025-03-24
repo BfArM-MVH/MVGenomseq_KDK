@@ -1,0 +1,166 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesPlan",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$dynamicAnchor": "carePlanRD",
+  "title": "Care Plan for Rare Diseases",
+  "type": "object",
+  "properties": {
+    "carePlanRD": {
+      "$ref": "#/$defs/carePlanRD"
+    },
+    "recommendedStudies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recommendedStudies"
+      }
+    },
+    "recommendedTherapies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recommendedTherapies"
+      }
+    }
+  },
+  "$defs": {
+    "carePlanRD": {
+      "type": "object",
+      "properties": {
+        "molecularBoardDecisionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the case conference."
+        },
+        "studyRecommended": {
+          "type": "boolean",
+          "description": "Recommendation for participation in a clinical study."
+        },
+        "counsellingRecommended": {
+          "type": "boolean",
+          "description": "Recommendation for human genetic counseling."
+        },
+        "reEvaluationRecommended": {
+          "type": "boolean",
+          "description": "Recommendation for re-evaluation."
+        },
+        "therapyRecommended": {
+          "type": "boolean",
+          "description": "Recommendation for therapy."
+        },
+        "clinicalManagementRecommended": {
+          "type": "boolean",
+          "description": "Recommendations for clinical management."
+        },
+        "clinicalManagementDescription": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Description of clinical management, e.g., hearing test, ultrasound."
+          }
+        }
+      },
+      "required": [
+        "molecularBoardDecisionDate",
+        "studyRecommended",
+        "counsellingRecommended",
+        "reEvaluationRecommended",
+        "therapyRecommended",
+        "clinicalManagementRecommended"
+      ]
+    },
+    "recommendedStudies": {
+        "type": "object",
+        "properties": {
+            "identifier": {
+            "type": "string",
+            "description": "Identifier for the recommended study."
+            },
+            "register": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "NCT",
+                  "DRKS",
+                  "EudraCT",
+                  "other"
+                ]
+              },
+            "description": "Study register with priority to NCT if multiple entries exist."
+            },
+            "name": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Name of the recommended study."
+            },
+            "id": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "variants": {
+              "type": "array",
+              "items": {
+                "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#/$defs/variants"
+              }
+            }
+        },
+        "required": [
+            "identifier"
+        ]
+    },
+    "recommendedTherapies": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "Identifier for the recommended therapy."
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "causal",
+              "symptomatic"
+            ]
+          },
+          "description": "Description of the recommended therapy."
+        },
+        "strategy": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                "systemicMedication",
+                "targetedMedication",
+                "preventionMedication",
+                "genetic",
+                "prophylactic",
+                "earlyDetection",
+                "combination",
+                "nutrition",
+                "other"
+                ]
+            },
+            "description": "Description of the recommended therapy strategy."
+        },
+        "strategyOther": {
+          "type": "string",
+            "description": "Description of the recommended therapy only if 'other' is selected."
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#/$defs/variants"
+          }
+        }
+      },
+      "required": [
+        "identifier"
+      ]
+    }
+  }
+}

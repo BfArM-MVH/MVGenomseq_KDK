@@ -1,0 +1,224 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/OncologyFollowUp",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$dynamicAnchor": "followUpOD",
+  "title": "Follow-Up Oncological Data",
+  "type": "object",
+  "properties": {
+    "followUpOD": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/followUpOD"
+      },
+      "minItems": 1,
+      "description": "Implementation of the therapy recommendation."
+    },
+    "therapies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/therapies"
+      },
+      "minItems": 1
+    },
+    "preventiveMeasures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/preventiveMeasures"
+      },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "followUpOD": {
+      "type": "object",
+      "properties": {
+        "followUpDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the follow-up."
+        },
+        "metachroneTumorObserved": {
+          "type": "boolean",
+          "description": "Indicates if metachronous tumors are observed."
+        },
+        "metachroneTumorDiagnosis": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "code",
+                  "version"
+                ]
+              }
+            ]
+          },
+          "minItems": 1,
+          "description": "Diagnosis code and version for metachronous tumors."
+        },
+        "ECOGPerformanceStatusScore": {
+          "type": "string",
+          "enum": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "description": "ECOG Performance Status."
+        },
+        "vitalStatus": {
+          "type": "string",
+          "enum": [
+            "living",
+            "deceased",
+            "unknown"
+          ],
+          "description": "Vital status of the patient."
+        },
+        "lastContactDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the last contact with the patient.",
+          "nullable": true
+        },
+        "deathDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of death.",
+          "nullable": true
+        }
+      },
+      "required": [
+        "followUpDate",
+        "metachroneTumorObserved",
+        "metachroneTumorDiagnosis",
+        "ECOGPerformanceStatusScore",
+        "vitalStatus"
+      ]
+    },
+    "therapies": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "description": "Identifier of the recommended systemic therapies."
+        },
+        "therapyStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the therapy started."
+        },
+        "therapyEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the therapy ended.",
+          "nullable": true
+        },
+        "terminationReason": {
+          "type": "string",
+          "enum": [
+            "prolongedRemission",
+            "conditionDeterioration",
+            "otherReasons",
+            "patientRequest",
+            "progression",
+            "toxicity",
+            "unknown"
+          ],
+          "description": "Reason for therapy termination."
+        },
+        "substance": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "version"
+                  ]
+                }
+              ]
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "name"
+          ]
+        },
+        "therapyResponse": {
+          "type": "string",
+          "enum": [
+            "PD",
+            "SD",
+            "PR",
+            "CR"
+          ],
+          "description": "Therapy response."
+        },
+        "therapyResponseDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of therapy response evaluation."
+        },
+        "therapyResponseSource": {
+          "type": "string",
+          "description": "Source of therapy response data."
+        }
+      },
+      "required": [
+        "reference",
+        "therapyStartDate"
+      ]
+    },
+    "preventiveMeasures": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "description": "Identifier of the preventive measure."
+        },
+        "preventiveMeasureDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the preventive measure."
+        },
+        "preventiveMeasureResult": {
+          "type": "string",
+          "enum": [
+            "o.B.",
+            "malignoma",
+            "unclear"
+          ],
+          "description": "Result of the preventive measure."
+        }
+      },
+      "required": [
+        "reference",
+        "preventiveMeasureDate",
+        "preventiveMeasureResult"
+      ]
+    }
+  },
+  "required": [
+    "reference",
+    "therapyStartDate",
+    "preventiveMeasureDate",
+    "preventiveMeasureResult",
+    "ECOGperformance",
+    "vitalStatus"
+  ]
+}

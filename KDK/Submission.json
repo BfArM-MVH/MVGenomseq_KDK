@@ -1,0 +1,187 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/Submission",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Submission and Consent MetaData Sub-schema",
+  "type": "object",
+  "required": [
+    "submissionDate",
+    "submissionType",
+    "coverageType",
+    "mvConsentDate",
+    "mvConsentPresentedDate",
+    "mvConsentVersion",
+    "mvConsentScope",
+    "tanC",
+    "gender",
+    "addressAGS",
+    "decisionToInclude",
+    "inclusionBoardDecisionDate"
+  ],
+  "properties": {
+    "submissionDate": {
+      "type": "string",
+      "description": "Date of submission in ISO 8601 format YYYY-MM-DD",
+      "format": "date"
+    },
+    "submissionType": {
+      "type": "string",
+      "description": "The options are: 'initial' for first submission, 'followup' is for followup submissions, 'addition' for additional submission, 'correction' for correction",
+      "enum": [
+        "initial",
+        "followup",
+        "addition",
+        "correction"
+      ]
+    },
+    "coverageType": {
+      "type": "string",
+      "description": "Health insurance providers",
+      "enum": [
+        "GKV",
+        "PKV",
+        "PKV/Beihilfe",
+        "other"
+      ]
+    },
+    "mvConsentDate": {
+      "type": "string",
+      "description": "Date of the signature of the Modellvorhaben consent; Date in ISO 8601 format YYYY-MM-DD",
+      "format": "date"
+    },
+    "mvConsentPresentedDate": {
+      "type": "string",
+      "description": "Date of the presentation of the Modellvorhaben consent; Date in ISO 8601 format YYYY-MM-DD",
+      "format": "date"
+    },
+    "mvConsentVersion": {
+      "type": "string",
+      "description": "Version of the research consent"
+    },
+    "mvConsentScope": {
+      "type": "object",
+      "description": "The scope of the Modellvorhaben consent given by the donor.",
+      "required": [
+        "consentMvSequencing",
+        "consentCaseIdentification",
+        "consentReIdentification"
+      ],
+      "properties": {
+        "consentMvSequencing": {
+          "type": "boolean",
+          "description": "The donor's consent to participate in the Modellvorhaben and sequencing."
+        },
+        "consentCaseIdentification": {
+          "type": "boolean",
+          "description": "The donor's consent to identify the case."
+        },
+        "consentReIdentification": {
+          "type": "boolean",
+          "description": "The donor's consent to be re-identified and to be re-contacted in case of new findings."
+        }
+      }
+    },
+    "mvConsentTerminationDate": {
+      "type": "string",
+      "description": "Date of the termination of the Modellvorhaben consent; Date in ISO 8601 format YYYY-MM-DD",
+      "format": "date"
+    },
+    "mvConsentTerminationScope": {
+      "type": "object",
+      "description": "The scope of the termination of the Modellvorhaben consent.",
+      "properties": {
+        "consentMvSequencingTermination": {
+          "type": "boolean",
+          "description": "The patient's termination of the Modellvorhaben consent to participate in the Modellvorhaben and sequencing"
+        },
+        "consentCaseIdentificationTermination": {
+          "type": "boolean",
+          "description": "The patient's termination of the Modellvorhaben consent to identify the case"
+        },
+        "consentReIdentificationTermination": {
+          "type": "boolean",
+          "description": "The patient's termination of the Modellvorhaben consent to re-identify the case and to re-contact the patient in case of new findings"
+        }
+      }
+    },
+    "researchConsent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "researchConsentDate": {
+            "type": "string",
+            "description": "Date of the research consent; Date in ISO 8601 format YYYY-MM-DD",
+            "format": "date"
+          },
+          "researchConsentPresentationDate": {
+            "type": "string",
+            "description": "Date of the delivery of the research consent; Date in ISO 8601 format YYYY-MM-DD",
+            "format": "date"
+          },
+          "researchConsentVersion": {
+            "type": "string",
+            "description": "Version of the research consent. e.g., MII-BC V.1.6d"
+          },
+          "researchConsentScope": {
+            "type": "object",
+            "description": "Scope of the research consent given by the patient; shall be given in JSON format.",
+            "properties": {}
+          },
+          "researchConsentRevocationDate": {
+            "type": "string",
+            "description": "Date of the revocation of the research consent; Date in ISO 8601 format YYYY-MM-DD",
+            "format": "date"
+          },
+          "researchConsentRevocationScope": {
+            "type": "object",
+            "description": "Scope of the revocation of the research consent given by the patient; shall be given in JSON format",
+            "properties": {}
+          }
+        }
+      },
+      "description": "Multiple declarations of consent possible! must be assigned to the respective data sets."
+    },
+    "tanC": {
+      "type": "string",
+      "description": "Progress number"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female",
+        "diverse",
+        "unknown"
+      ]
+    },
+    "birthDate": {
+      "type": "string",
+      "description": "Date of birth without the day. Format YYYY-MM",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "addressAGS": {
+        "type": "string",
+        "description": "Official municipal code of the patient's residence."
+    },
+    "decisionToInclude": {
+      "type": "boolean",
+      "description": "Decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project"
+    },
+    "inclusionBoardDecisionDate": {
+      "type": "string",
+      "description": "Date of the decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project",
+      "format": "date"
+    },
+    "rejectionJustification": {
+      "type": "string",
+      "enum": [
+        "targetDiagnosisRecommended",
+        "probablyPsychosomaticIllness",
+        "probablyCommonDisease",
+        "probablyNotGeneticCause",
+        "otherReason"
+      ],
+      "description": "Reason for the negative decision"
+    }
+  }
+}

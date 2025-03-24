@@ -1,0 +1,26 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseases",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rare Diseases Data Schema",
+  "type": "object",
+  "required": [
+    "metaData"
+  ],
+  "properties": {
+    "metaData": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/Submission#"
+    },
+    "RareDiseasesCase": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesCase#"
+    },
+    "RareDiseasesMolecular": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#"
+    },
+    "RareDiseasesPlan": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesPlan#"
+    },
+    "RareDiseasesFollowUp": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesFollowUp#"
+    }
+  }
+}
