@@ -1,0 +1,372 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/OncologyMolecular",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Oncology Molecular Report",
+  "description": "Schema for molecular report in oncology, including various variant types.",
+  "type": "object",
+  "properties": {
+    "smallVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SmallVariant"
+      }
+    },
+    "copyNumberVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CopyNumberVariant"
+      }
+    },
+    "structuralVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StructuralVariant"
+      }
+    },
+    "expressionVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExpressionVariant"
+      }
+    },
+    "complexBiomarkers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ComplexBiomarker"
+      }
+    },
+    "sbsSignatures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SbsSignature"
+      }
+    }
+  },
+  "$defs": {
+    "Common": {
+      "properties": {
+        "genomicSource": {
+          "type": "string",
+          "enum": [
+            "somatic",
+            "germline"
+          ],
+          "description": "Source of the genomic material."
+        },
+        "gene": {
+          "description": "Gene symbol (HGNC) and HGNC ID. e.g., HGNC:1100",
+          "allOf": [
+            {
+              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+            },
+            {
+              "required": [
+                "code",
+                "display"
+              ]
+            }
+          ]
+        },
+        "localization": {
+          "type": "string",
+          "description": "Localization of molecular alteration.",
+          "enum": [
+            "coding",
+            "inRegulatoryElements",
+            "notInCodingAndNotInRegulatoryElements"
+          ]
+        },
+        "identifier": {
+          "allOf": [
+            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "description": "Unique identifier for the variant." }
+          ]
+        }
+      }
+    },
+    "SmallVariant": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "genomicSource": {
+          "$ref": "#/$defs/Common/properties/genomicSource"
+        },
+        "gene": {
+          "$ref": "#/$defs/Common/properties/gene"
+        },
+        "transcriptId": {
+          "type": "string",
+          "description": "Transcript ID (Ensembl/RefSeq) with version. e.g., ENST00000644379.2"
+        },
+        "dnaChange": {
+          "type": "string",
+          "description": "DNA level alteration (HGVSc)."
+        },
+        "proteinChange": {
+          "type": "string",
+          "description": "Protein level alteration (HGVSp)."
+        },
+        "variantTypes": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              },
+              {
+                "required": [
+                  "code",
+                  "system",
+                  "version"
+                ]
+              }
+            ]
+          },
+          "description": "Alteration type from Sequence Ontology."
+        },
+        "localization": {
+          "$ref": "#/$defs/Common/properties/localization"
+        },
+        "loh": {
+          "type": "boolean",
+          "description": "Loss of heterozygosity."
+        }
+      },
+      "required": [
+        "identifier",
+        "genomicSource",
+        "gene",
+        "transcriptId",
+        "dnaChange",
+        "localization"
+      ]
+    },
+    "CopyNumberVariant": {
+      "type": "object",
+      "description": "Copy number changes (affecting a gene).",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "genomicSource": {
+          "$ref": "#/$defs/Common/properties/genomicSource"
+        },
+        "cnvType": {
+          "type": "string",
+          "enum": [
+            "completeLoss",
+            "heterozygousLoss",
+            "loss",
+            "lowLevelGain",
+            "highLevelGain",
+            "gain"
+          ],
+          "description": "Type of copy number alteration."
+        },
+        "gene": {
+          "$ref": "#/$defs/Common/properties/gene"
+        },
+        "chromosome": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "X",
+            "Y"
+          ]
+        },
+        "endPosition": {
+          "type": "integer",
+          "description": "End position on the chromosome (HG38-Position)."
+        },
+        "startPosition": {
+          "type": "integer",
+          "description": "Start position on the chromosome (HG38-Position)."
+        },
+        "localization": {
+          "$ref": "#/$defs/Common/properties/localization"
+        }
+      },
+      "required": [
+        "identifier",
+        "genomicSource",
+        "localization",
+        "cnvType"
+      ]
+    },
+    "StructuralVariant": {
+      "type": "object",
+      "description": "Structural variants.",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "genomicSource": {
+          "$ref": "#/$defs/Common/properties/genomicSource"
+        },
+        "geneA": {
+          "$ref": "#/$defs/Common/properties/gene",
+          "description": "represents the 5′ gene"
+        },
+        "geneB": {
+          "$ref": "#/$defs/Common/properties/gene",
+          "description": "represents the 3′ gene"
+        },
+        "structureType": {
+          "type": "string",
+          "enum": [
+            "translocation",
+            "translocationWithCodingRegion",
+            "translocationWithNonCodingRegion",
+            "inversion",
+            "deletionOfGeneSegments",
+            "duplicationOfGeneSegments"
+          ],
+          "description": "Type of structural variant."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the structural variant (HGVS/ISCN)."
+        },
+        "sequenceType": {
+          "type": "string",
+          "enum": [
+            "DNA",
+            "RNA"
+          ]
+        },
+        "localization": {
+          "$ref": "#/$defs/Common/properties/localization"
+        }
+      },
+      "required": [
+        "identifier",
+        "genomicSource",
+        "geneA",
+        "geneB",
+        "structureType",
+        "sequenceType",
+        "localization"
+      ]
+    },
+    "ExpressionVariant": {
+      "type": "object",
+      "description": "Expression level of mRNA.",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "gene": {
+          "$ref": "#/$defs/Common/properties/gene"
+        },
+        "expressionType": {
+          "type": "string",
+          "enum": [
+            "noExpression",
+            "normalExpression",
+            "highExpression",
+            "lowExpression"
+          ],
+          "description": "Expression level of mRNA."
+        },
+        "reference": {
+          "type": "string",
+          "description": "e.g. reference cohort of 400 patients"
+        }
+      },
+      "required": [
+        "identifier",
+        "gene",
+        "expressionType",
+        "reference"
+      ]
+    },
+    "ComplexBiomarker": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "ploidy": {
+          "type": "integer"
+        },
+        "tmb": {
+          "type": "number",
+          "description": "Tumor mutational burden. mut/MB"
+        },
+        "hrdHigh": {
+          "type": "boolean",
+          "description": "High homologous recombination deficiency."
+        },
+        "lstHigh": {
+          "type": "boolean",
+          "description": "High large-scale transitions."
+        },
+        "taiHigh": {
+          "type": "boolean",
+          "description": "High telomeric allelic imbalance."
+        }
+      },
+      "required": [
+        "identifier"
+      ]
+    },
+    "SbsSignature": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$ref": "#/$defs/Common/properties/identifier"
+        },
+        "sbsVersion": {
+          "type": "string",
+          "description": "SBS Signatures Version"
+        },
+        "sbsSignatures": {
+          "type": "array",
+          "description": "List of SBS Signatures. e.g. SBS 6",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sbsSignaturePresent": {
+          "type": "boolean",
+          "description": "SBS Signature present. **Note:** This boolean implies that there could be none. SBSsignatures is an array with 0..N, so this parameter is redundant and will be removed in the future."
+        }
+      },
+      "required": [
+        "identifier",
+        "sbsSignatures"
+      ]
+    },
+    "Variant": {
+      "anyOf": [
+        { "$ref": "#/$defs/SmallVariant" },
+        { "$ref": "#/$defs/CopyNumberVariant" },
+        { "$ref": "#/$defs/StructuralVariant" },
+        { "$ref": "#/$defs/ExpressionVariant" }
+      ]
+    }
+  }
+}

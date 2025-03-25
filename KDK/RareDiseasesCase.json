@@ -1,0 +1,195 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesCase",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rare Diseases Data Schema",
+  "type": "object",
+  "properties": {
+    "diagnosisRd": {
+     "$ref": "#/$defs/DiagnosisRd"
+    },
+    "priorRd": {
+     "$ref": "#/$defs/PriorRd"
+    }
+  },
+  "$defs": {
+    "DiagnosisRd": {
+      "type": "object",
+      "properties": {
+        "phenotypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "Clinical description of the phenotype"
+                  }
+                }
+              }
+            ],
+            "required": ["code"]
+          }
+        },
+        "hpoVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Version HP Ontology in format x.y.z (e.g. 2.0.4)"
+        },
+        "symptomOnsetDate": {
+          "type": "string",
+          "description": "Start of symptoms",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+        },
+        "molecularBoardDecisionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Case conference date"
+        },
+        "diagnosticExtent": {
+          "type": "string",
+          "enum": [
+            "singleGenome",
+            "duoGenome",
+            "trioGenome"
+          ],
+          "description": "Diagnostics recommendation"
+        },
+        "diagnosticAssessment": {
+          "type": "string",
+          "enum": [
+            "noGeneticDiagnosis",
+            "suspectedGeneticDiagnosis",
+            "furtherGeneticDiagnosisRecommended",
+            "confirmedGeneticDiagnosis",
+            "partialGeneticDiagnosis"
+          ],
+          "description": "Assessment of genetic diagnostics"
+        },
+        "diagnoses": {
+          "type": "array",
+          "description": "ICD10 mandatory, ORPHACode mandatory, Alpha ID mandatory",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              },
+              {
+                "required": [ "code", "system", "version" ]
+              }
+            ]
+          },
+          "minItems": 3
+        },
+        "noMatchingCodeExists": {
+          "type": "boolean",
+          "description": "Indicates whether a matching code exists."
+        },
+        "diagnosisGmfcs": {
+          "type": "string",
+          "enum": [
+            "I",
+            "II",
+            "III",
+            "IV",
+            "V"
+          ],
+          "description": "Age-appropriate information, empty if not applicable"
+        }
+      },
+      "required": [
+        "phenotypes",
+        "hpoVersion",
+        "symptomOnsetDate",
+        "molecularBoardDecisionDate",
+        "diagnosticExtent",
+        "diagnoses"
+      ]
+    },
+    "PriorRd": {
+      "type": "object",
+      "properties": {
+        "genomicTestType": {
+          "type": "string",
+          "enum": [
+            "exome",
+            "genomeLongRead",
+            "genomeShortRead",
+            "panel",
+            "single",
+            "array",
+            "karyotyping",
+            "other",
+            "none"
+          ],
+          "description": "Type of diagnostics"
+        },
+        "genomicStudyType": {
+          "type": "string",
+          "enum": [
+            "single",
+            "duo",
+            "trio"
+          ]
+        },
+        "diagnosticDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of diagnostics"
+        },
+        "diagnosticResult": {
+          "type": "string",
+          "enum": [
+            "phenotypeNotCompletelyClarified",
+            "structuralVariantWithUnclearBreakpoint",
+            "unclearVariantInGeneticDisease",
+            "noPathogenicVariantDetected",
+            "other"
+          ],
+          "description": "Result of diagnostics"
+        },
+        "hospitalizationPeriods": {
+          "type": "string",
+          "enum": [
+            "none",
+            "upToFive",
+            "upToTen",
+            "upToFifteen",
+            "moreThanFifteen",
+            "unknown"
+          ],
+          "description": "Number of inpatient treatments in the last five years"
+        },
+        "hospitalizationDuration": {
+          "type": "string",
+          "enum": [
+            "none",
+            "upToFive",
+            "upToFifteen",
+            "upToFifty",
+            "moreThanFifty",
+            "unknown"
+          ],
+          "description": "Estimated duration of inpatient case-relevant pre-therapy in days"
+        },
+        "zseContactDate": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$",
+          "description": "Month and year of first contact with a specialized center for rare diseases"
+        }
+      },
+      "required": [
+        "genomicTestType",
+        "diagnosticAssessment",
+        "hospitalizationPeriods",
+        "hospitalizationDuration",
+        "zseContactDate"
+      ]
+    }
+  }
+}

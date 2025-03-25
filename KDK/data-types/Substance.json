@@ -1,0 +1,14 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/data-types/Substance",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Substance",
+  "type": "object",
+  "properties": {
+    "code": {
+      "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

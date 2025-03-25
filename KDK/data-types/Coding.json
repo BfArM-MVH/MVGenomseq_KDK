@@ -1,0 +1,27 @@
+{
+    "$id": "https://www.bfarm.de/schemas/genomde/data-types/Coding",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$comment": "Based on FHIR Coding data type: https://hl7.org/fhir/R4B/datatypes.html#Coding",
+    "title": "Coding",
+    "description": "A reference to a code defined by a terminology system Elements defined in Ancestors: id, extension",
+    "type": "object",
+    "properties": {
+        "system": {
+            "description": "Identity of the terminology system",
+            "type": "string",
+            "format": "uri"
+        },
+        "version": {
+            "description": "Version of the system - if relevant",
+            "type": "string"
+        },
+        "code": {
+            "description": "Symbol in syntax defined by the system",
+            "type": "string"
+        },
+        "display": {
+            "description": "Representation defined by the system",
+            "type": "string"
+        }
+    }
+}

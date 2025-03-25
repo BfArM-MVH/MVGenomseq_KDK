@@ -1,0 +1,247 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/OncologyFollowUp",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$dynamicAnchor": "followUpOD",
+  "title": "Follow-Up Oncological Data",
+  "type": "object",
+  "properties": {
+    "followUpOds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FollowUpOd"
+      },
+      "minItems": 1,
+      "description": "Implementation of the therapy recommendation."
+    }
+  },
+  "$defs": {
+    "FollowUpOd": {
+      "type": "object",
+      "properties": {
+        "followUpDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the follow-up."
+        },
+        "metachroneDiagnoses": {
+          "type": "boolean",
+          "description": "Indicates if metachronous tumors are observed."
+        },
+        "additionalDiagnoses": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of the additional diagnosis."
+                  }
+                },
+                "required": [
+                  "code",
+                  "version",
+                  "date"
+                ]
+              }
+            ]
+          },
+          "minItems": 1,
+          "description": "Diagnosis code and version for metachronous tumors."
+        },
+        "ecogPerformanceStatusScore": {
+          "type": "string",
+          "enum": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "unknown",
+            "notApplicable"
+          ],
+          "description": "ECOG Performance Status."
+        },
+        "vitalStatus": {
+          "type": "string",
+          "enum": [
+            "living",
+            "deceased"
+          ],
+          "description": "Vital status of the patient."
+        },
+        "lastContactDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the last contact with the patient."
+        },
+        "deathDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of death.",
+          "nullable": true
+        },
+        "therapies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Therapy"
+          }
+        },
+        "preventiveMeasures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PreventiveMeasure"
+          }
+        }
+      },
+      "required": [
+        "followUpDate",
+        "metachroneDiagnoses",
+        "ecogPerformanceStatusScore",
+        "vitalStatus"
+      ]
+    },
+    "Therapy": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "allOf": [
+            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "description": "Identifier of the recommended systemic therapies." }
+          ]
+        },
+        "therapyStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the therapy started."
+        },
+        "therapyEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the therapy ended.",
+          "nullable": true
+        },
+        "terminationReasonOBDS": {
+          "type": "string",
+          "enum": [
+            "E",
+            "R",
+            "W",
+            "A",
+            "P",
+            "S",
+            "V",
+            "T",
+            "U"
+          ]
+        },
+        "substances": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+              },
+              {
+                "oneOf": [
+                  {
+                    "required": ["code"],
+                    "properties": {
+                      "code": {
+                        "allOf": [
+                          {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "system",
+                              "code",
+                              "version"
+                            ]
+                          }
+                        ]
+                      },
+                      "name": { "not": {} }
+                    }
+                  },
+                  {
+                    "required": ["name"],
+                    "properties": {
+                      "code": { "not": {} }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "therapyResponse": {
+          "type": "string",
+          "enum": [
+            "PD",
+            "SD",
+            "PR",
+            "CR"
+          ],
+          "description": "Therapy response."
+        },
+        "therapyResponseDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of therapy response evaluation."
+        },
+        "therapyResponseSource": {
+          "type": "string",
+          "description": "Source of therapy response data."
+        }
+      },
+      "required": [
+        "therapyResponseDate",
+        "therapyStartDate"
+      ]
+    },
+    "PreventiveMeasure": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "allOf": [
+            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "description": "Identifier of the preventive measure." }
+          ]
+        },
+        "preventiveMeasureDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the preventive measure."
+        },
+        "preventiveMeasureResult": {
+          "type": "string",
+          "enum": [
+            "noFindings",
+            "malignoma",
+            "unclear"
+          ],
+          "description": "Result of the preventive measure."
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reference",
+        "preventiveMeasureDate",
+        "preventiveMeasureResult"
+      ]
+    }
+  },
+  "required": [
+    "followUpOds"
+  ]
+}

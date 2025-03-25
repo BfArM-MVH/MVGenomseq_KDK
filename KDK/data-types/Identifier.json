@@ -1,0 +1,7 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/data-types/Identifier",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Identifier",
+  "description": "A base identifier type.",
+  "type": "string"
+}

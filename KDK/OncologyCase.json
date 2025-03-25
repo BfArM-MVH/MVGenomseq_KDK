@@ -1,0 +1,459 @@
+{
+    "$id": "https://www.bfarm.de/schemas/genomde/OncologyCase",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Oncology Case Data Schema",
+    "type": "object",
+    "required": [
+        "diagnosisOd"
+    ],
+    "properties": {
+        "diagnosisOd": {
+            "$ref": "#/$defs/DiagnosisOd"
+        },
+        "priorDiagnostic": {
+            "$ref": "#/$defs/PriorDiagnostic"
+        },
+        "priorProcedures": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/PriorProcedure"
+            }
+        }
+    },
+    "$defs": {
+        "DiagnosisOd": {
+            "type": "object",
+            "properties": {
+                "mainDiagnosis": {
+                    "allOf": [
+                        {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "date": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Date of the main diagnosis. If the day is unknown, use the 15th of the month."
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "system",
+                                "version",
+                                "date"
+                            ]
+                        }
+                    ],
+                    "description": "ICD-10-GM code for the main diagnosis"
+                },
+                "additionalDiagnoses": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "description": "Date of the diagnosis. If the day is unknown, use the 15th of the month."
+                                    }
+                                },
+                                "required": [
+                                    "code",
+                                    "system",
+                                    "version",
+                                    "date"
+                                ]
+                            }
+                        ],
+                        "description": "ICD-10-GM, ORPHA or AlphaID code for additional diagnoses with date."
+                    }
+                },
+                "ecogPerformanceStatusScore": {
+                    "type": "string",
+                    "enum": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "unknown",
+                        "notApplicable"
+                    ],
+                    "description": "ECOG Performance Status Score"
+                },
+                "germlineDiagnosisConfirmed": {
+                    "type": "boolean",
+                    "description": "Indicates if a hereditary tumor syndrome diagnosis is confirmed."
+                },
+                "germlineDiagnoses": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            },
+                            {
+                                "required": [
+                                    "code",
+                                    "system",
+                                    "version"
+                                ]
+                            }
+                        ]
+                    },
+                    "description": "ICD-10-GM code ORPHA or AlphaID possible for the germline diagnosis"
+                },
+                "hpoTerms": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "code"
+                                ]
+                            }
+                        ],
+                        "description": "HP Ontology"
+                    }
+                },
+                "histology": {
+                    "allOf": [
+                        {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                        },
+                        {
+                            "required": [
+                                "code",
+                                "system",
+                                "version"
+                            ]
+                        }
+                    ],
+                    "description": "Histological findings ICD-O-3-M"
+                },
+                "topography": {
+                    "allOf": [
+                        {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                        },
+                        {
+                            "required": [
+                                "code",
+                                "system",
+                                "version"
+                            ]
+                        }
+                    ],
+                    "description": "Topography findings ICD-O-3-T"
+                },
+                "grading": {
+                    "type": "string",
+                    "enum": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "X",
+                        "L",
+                        "M",
+                        "H",
+                        "B",
+                        "U",
+                        "T"
+                    ],
+                    "description": "Differentiation grade"
+                },
+                "tnmClassifications": {
+                    "type": "array",
+                    "description": "An array containing the TNM classification components (T, N, M), each represented using SNOMED CT codes.",
+                    "minItems": 3,
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string",
+                                        "description": "Optional shorthand notation for quick reference, e.g., 'cT1a'."
+                                    }
+                                },
+                                "required": [
+                                    "code",
+                                    "system",
+                                    "version",
+                                    "display"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "tnmSystem": {
+                    "type": "string",
+                    "description": "TNM classification system. AJCC, UICC. **NOTE**: Might be removed/added to tnmClassification array in the next version."
+                },
+                "tnmVersion": {
+                    "type": "string",
+                    "description": "TNM classification version. **NOTE**: Might be removed/added to tnmClassification array in the next version."
+                },
+                "additionalClassification": {
+                    "type": "object",
+                    "description": "Handles cases for additional classification or where the TNM classification system (AJCC or UICC) is unknown. This provides a string alternative to the SNOMED CT coding of TNM, using a system 'TNM'.",
+                    "properties": {
+                        "system": {
+                            "type": "string",
+                            "description": "The classification system used, e.g., 'TNM'."
+                        },
+                        "key": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "diagnosticAssessment": {
+                    "type": "string",
+                    "enum": [
+                        "noGeneticDiagnosis",
+                        "suspectedGeneticDiagnosis",
+                        "furtherGeneticDiagnosisRecommended",
+                        "confirmedGeneticDiagnosis",
+                        "partialGeneticDiagnosis"
+                    ],
+                    "description": "Evaluation of genetic diagnostics (only for HT)."
+                }
+            },
+            "required": [
+                "mainDiagnosis",
+                "ecogPerformanceStatusScore",
+                "germlineDiagnosisConfirmed",
+                "histology",
+                "topography",
+                "diagnosticAssessment"
+            ]
+        },
+        "PriorDiagnostic": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "exome",
+                        "genomeLongRead",
+                        "genomeShortRead",
+                        "panel",
+                        "single",
+                        "array",
+                        "karyotyping",
+                        "other",
+                        "none"
+                    ]
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "simpleVariants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/PriorVariant"
+                    }
+                },
+                "complexVariants": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["type"]
+        },
+        "PriorVariant": {
+            "type": "object",
+            "properties": {
+                "gene": {
+                    "description": "Gene display: Gene symbol (HGNC); BRAF. Gene code: HGNC ID; zB HGNC:1100",
+                    "allOf": [
+                        {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                        },
+                        {
+                            "required": [
+                                "code",
+                                "display"
+                            ]
+                        }
+                    ]
+                },
+                "transcript": {
+                    "allOf": [
+                        {
+                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                        },
+                        {
+                            "required": [
+                                "code",
+                                "system"
+                            ]
+                        }
+                    ]
+                },
+                "dnaChange": {
+                    "type": "string",
+                    "description": "HGVSc (Change at DNA Level). e.g. c.173_187del"
+                },
+                "proteinChange": {
+                    "type": "string",
+                    "description": "HGVSp (Change at Protein Level). e.g. p.V600E"
+                },
+                "variantTypes": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            },
+                            {
+                                "required": [
+                                    "code",
+                                    "system",
+                                    "version"
+                                ]
+                            }
+                        ]
+                    },
+                    "description": "Attribute values should be derived from the Sequence Ontology. Refer to the specific subset under 'sequence_variant' at http://www.sequenceontology.org/miso for allowed codes."
+                }
+            },
+            "required": [
+                "gene",
+                "transcript",
+                "dnaChange"
+            ]
+        },
+        "PriorProcedure": {
+            "type": "object",
+            "properties": {
+                "treatmentType": {
+                    "type": "string",
+                    "enum": [
+                        "O",
+                        "A",
+                        "N",
+                        "I",
+                        "S"
+                    ]
+                },
+                "intention": {
+                    "type": "string",
+                    "enum": [
+                        "K",
+                        "P",
+                        "S",
+                        "X"
+                    ]
+                },
+                "substances": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+                            },
+                            {
+                                "oneOf": [
+                                    {
+                                        "required": ["code"],
+                                        "properties": {
+                                            "code": {
+                                                "allOf": [
+                                                    {
+                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "required": [
+                                                            "system",
+                                                            "code",
+                                                            "version"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "name": { "not": {} }
+                                        }
+                                    },
+                                    {
+                                        "required": ["name"],
+                                        "properties": {
+                                            "code": { "not": {} }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "therapyStartDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date when the therapy started. If the day is unknown, use the 15th of the month."
+                },
+                "therapyEndDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "terminationReasonOBDS": {
+                    "type": "string",
+                    "enum": [
+                        "E",
+                        "R",
+                        "W",
+                        "A",
+                        "P",
+                        "S",
+                        "V",
+                        "T",
+                        "U"
+                    ]
+                },
+                "therapyResponseDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "therapyResponse": {
+                    "type": "string",
+                    "enum": [
+                        "PD",
+                        "SD",
+                        "PR",
+                        "CR"
+                    ]
+                }
+            },
+            "required": [
+                "treatmentType",
+                "therapyStartDate"
+            ]
+        }
+    }
+}

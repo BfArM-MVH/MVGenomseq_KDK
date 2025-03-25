@@ -1,0 +1,209 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/Submission",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Submission and Consent MetaData Sub-schema",
+  "type": "object",
+  "required": [
+    "submission",
+    "coverageType",
+    "mvConsent",
+    "tanC",
+    "gender",
+    "birthDate",
+    "addressAGS",
+    "decisionToInclude",
+    "inclusionBoardDecisionDate"
+  ],
+  "properties": {
+    "submission": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Date of submission in ISO 8601 format YYYY-MM-DD",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "The options are: 'initial' for first submission, 'followup' is for followup submissions, 'addition' for additional submission, 'correction' for correction",
+            "enum": [
+              "initial",
+              "followup",
+              "addition",
+              "correction"
+            ]
+          },
+          "submitterId": {
+            "type": "string",
+            "description": "LE ID as specified by the BfArM or RVO"
+          },
+          "genomicDataCenterId": {
+            "type": "string",
+            "description": "Id of the genomic data center, format GDCXXXnnn 9-digit assigned by BfArM"
+          },
+          "clinicalDataNodeId": {
+            "type": "string",
+            "description": "Id of the clinical data node, format KDKXXXnnn 9-digit assigned by BfArM"
+          },
+          "diseaseType": {
+            "type": "string",
+            "enum": [
+              "oncological",
+              "rare",
+              "hereditary"
+            ],
+            "description": "Type of disease (must be oncological or hereditary for Oncology object, rare for RareDiseasesObject)"
+          }
+        },
+        "required": [
+          "date",
+          "type",
+          "submitterId",
+          "genomicDataCenterId",
+          "clinicalDataNodeId",
+          "diseaseType"
+        ]
+    },
+    "coverageType": {
+      "type": "string",
+      "description": "Health insurance providers",
+      "enum": [
+        "GKV",
+        "PKV",
+        "BG",
+        "SEL",
+        "SOZ",
+        "GPV",
+        "PPV",
+        "BEI",
+        "SKT",
+        "UNK"
+      ]
+    },
+    "mvConsent": {
+      "type": "object",
+      "properties": {
+        "presentationDate": {
+          "type": "string",
+          "description": "Date of delivery. Date (in ISO 8601 format YYYY-MM-DD) on which the Model Project Declaration of Participation was presented to the patient, unless identical to the date of signature",
+          "format": "date"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the declaration of participation. Name and version of the declaration of participation in the MV GenomSeq, e.g.: 'Patient Info TE Consent MVGenomSeq vers01'"
+        },
+        "scope": {
+          "type": "array",
+          "description" : "Modules of the consent to MV: must have at least a permit of mvSequencing",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Consent or refusal to participate and consent, must be indicated for each option listed in the scope of consent.",
+                "enum": [
+                  "permit",
+                  "deny"
+                ]
+              },
+              "date": {
+                "type": "string",
+                "description": "Date of signature of the pilot projects consent; in ISO 8601 format YYYY-MM-DD.",
+                "format": "date"
+              },
+              "domain": {
+                "type": "string",
+                "description": "Scope of consent or revocation.",
+                "enum": [
+                  "mvSequencing",
+                  "reIdentification",
+                  "caseIdentification"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "date",
+              "domain"
+            ]
+          }
+        }
+      },
+      "required": [
+        "version",
+        "scope"
+      ]
+    },
+    "researchConsents":{
+      "type":"array",
+      "description":"Research consents. Multiple declarations of consent are possible! Must be assigned to the respective data sets.",
+      "items":{
+        "type":"object",
+        "required":[
+          "schemaVersion",
+          "scope"
+        ],
+        "properties":{
+          "schemaVersion":{
+            "type":"string",
+            "description":"Schema version of de.medizininformatikinitiative.kerndatensatz.consent",
+            "enum":[
+              "2025.0.1"
+            ]
+          },
+          "presentationDate":{
+            "type":"string",
+            "description":"Date of the delivery of the research consent in ISO 8601 format (YYYY-MM-DD)",
+            "format":"date"
+          },
+          "scope":{
+            "type":"object",
+            "description":"Scope of the research consent in JSON format following the MII IG Consent v2025 FHIR schema. See 'https://www.medizininformatik-initiative.de/Kerndatensatz/KDS_Consent_V2025/MII-IG-Modul-Consent.html' and 'https://packages2.fhir.org/packages/de.medizininformatikinitiative.kerndatensatz.consent'."
+          }
+        }
+      }
+    },
+    "tanC": {
+      "type": "string",
+      "description": "Transaction number VNk"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female",
+        "other",
+        "unknown"
+      ]
+    },
+    "birthDate": {
+      "type": "string",
+      "description": "Date of birth without the day. Format YYYY-MM",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "addressAGS": {
+        "type": "string",
+        "description": "Official municipal code of the patient's residence."
+    },
+    "decisionToInclude": {
+      "type": "boolean",
+      "description": "Decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project"
+    },
+    "inclusionBoardDecisionDate": {
+      "type": "string",
+      "description": "Date of the decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project",
+      "format": "date"
+    },
+    "rejectionJustification": {
+      "type": "string",
+      "enum": [
+        "targetedDiagnosticRecommended",
+        "probablyPsychosomaticIllness",
+        "probablyCommonDisease",
+        "probablyNoGeneticCause",
+        "otherReason"
+      ],
+      "description": "Reason for the negative decision"
+    }
+  }
+}

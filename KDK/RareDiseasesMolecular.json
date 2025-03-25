@@ -1,0 +1,330 @@
+{
+  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rare Diseases Molecular Report",
+  "type": "object",
+  "required": [
+    "variants"
+  ],
+  "properties": {
+    "variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Variant"
+      },
+      "minItems": 1
+    },
+    "structuralVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StructuralVariant"
+      }
+    },
+    "smallVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SmallVariant"
+      }
+    },
+    "copyNumberVariants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CopyNumberVariant"
+      }
+    }
+  },
+  "$defs": {
+    "Variant": {
+      "type": "object",
+      "description": "For all variants",
+      "properties": {
+        "identifier": {
+          "allOf": [
+            {
+              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+            },
+            {
+              "description": "Supporting molecular alteration identifier."
+            }
+          ]
+        },
+        "genes": {
+          "type": "array",
+          "items": {
+            "code": {
+              "type": "string",
+              "description": "HGNC:ID"
+            },
+            "localization": {
+              "type": "string",
+              "enum": [
+                "codingRegion",
+                "splicingRegion",
+                "regulatoryRegion",
+                "intronicIntergenic"
+              ],
+              "description": "Gene localization"
+            }
+          }
+        },
+        "gdnaChange": {
+          "type": "string",
+          "description": "gDNA change (HGVS)."
+        },
+        "cdnaChange": {
+          "type": "string",
+          "description": "cDNA change (HGVS)."
+        },
+        "proteinChange": {
+          "type": "string",
+          "description": "Protein change (HGVS)."
+        },
+        "acmgClass": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "description": "ACMG class."
+        },
+        "acmgCriteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "enum": [
+                  "PVS1",
+                  "PS1",
+                  "PS2",
+                  "PS3",
+                  "PS4",
+                  "PM1",
+                  "PM2",
+                  "PM3",
+                  "PM4",
+                  "PM5",
+                  "PM6",
+                  "PP1",
+                  "PP2",
+                  "PP3",
+                  "PP4",
+                  "PP5",
+                  "BA1",
+                  "BS1",
+                  "BS2",
+                  "BS3",
+                  "BS4",
+                  "BP1",
+                  "BP2",
+                  "BP3",
+                  "BP4",
+                  "BP5",
+                  "BP6",
+                  "BP7"
+                ]
+              },
+              "modifier": {
+                "type": "string",
+                "enum": [
+                  "pvs",
+                  "ps",
+                  "pm",
+                  "pp",
+                  "ba",
+                  "bs",
+                  "bp",
+                  "bm"
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        },
+        "zygosity": {
+          "type": "string",
+          "enum": [
+            "heterozygous",
+            "homozygous",
+            "compHet",
+            "hemi",
+            "homoplasmic",
+            "heteroplasmic"
+          ],
+          "description": "Zygosity."
+        },
+        "segregationAnalysis": {
+          "type": "string",
+          "enum": [
+            "notPerformed",
+            "deNovo",
+            "fromFather",
+            "fromMother"
+          ],
+          "description": "Segregation analysis."
+        },
+        "modeOfInheritance": {
+          "type": "string",
+          "enum": [
+            "dominant",
+            "recessive",
+            "XLinked",
+            "mitochondrial",
+            "unclear"
+          ]
+        },
+        "diagnosticSignificance": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "incidental",
+            "candidate"
+          ],
+          "description": "Significance for case."
+        },
+        "externalId": {
+          "type": "string",
+          "description": "ClinVar variant ID."
+        },
+        "publications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Reference[Publication]. e.g., PubMed ID"
+        }
+      },
+      "required": [
+        "identifier"
+      ]
+    },
+    "StructuralVariant": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "ISCN Description."
+        }
+      }
+    },
+    "SmallVariant": {
+      "type": "object",
+      "properties": {
+        "chromosome": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "X",
+            "Y",
+            "MT"
+          ]
+        },
+        "startPosition": {
+          "type": "integer",
+          "description": "Start coordinate in GRCh38 VCF-style."
+        },
+        "endPosition": {
+          "type": "integer",
+          "description": "End coordinate in GRCh38 VCF-style."
+        },
+        "ref": {
+          "type": "string",
+          "description": "ref sequence VCF-style."
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt/observed sequence VCF-style."
+        }
+      },
+      "required": [
+        "chromosome",
+        "position",
+        "ref",
+        "alt"
+      ]
+    },
+    "CopyNumberVariant": {
+      "type": "object",
+      "properties": {
+        "chromosome": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "X",
+            "Y",
+            "MT"
+          ]
+        },
+        "startPosition": {
+          "type": "integer",
+          "description": "GRCh38 coordinate VCF-style."
+        },
+        "endPosition": {
+          "type": "integer",
+          "description": "GRCh38 coordinate VCF-style."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "gain",
+            "loss"
+          ]
+        }
+      },
+      "required": [
+        "chromosome",
+        "startPosition",
+        "endPosition",
+        "type"
+      ]
+    }
+  }
+}
