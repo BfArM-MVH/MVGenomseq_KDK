@@ -1,0 +1,14 @@
+{
+        "SubmittedCase": {
+                "submissionDate":"2024-10-01", 
+                "submissionType":"initial", 
+                "tan":"0A7B84E9A2F3C1D086FE24C05D8A6B89", 
+                "submitterId":"000000000",
+                "dataNodeId":"KDKK00000",
+                "diseaseType":"oncological",
+                "dataCategory":"clinical",
+                "libraryType":"panel",
+                "coverageType":"GKV",
+                "dataQualityCheckPassed":true
+        }
+}
