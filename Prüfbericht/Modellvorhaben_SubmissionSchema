@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "SubmissionSummary",
+    "description": "Prüfbericht Datenablieferung Modellvorhaben V0.2 vom 03.04.2024",
+    "type": "object",
+    "properties": {
+        "SubmittedCase": {
+            "type": "object",
+            "properties": {
+                "submissionDate": {
+                    "type": "string",
+                    "description": "Datum der Datenübermittlung ISO 8601 YYYY-MM-DD",
+                    "format": "date"
+                },
+                "submissionType": {
+                    "type": "string",
+                    "description": "\"initial\" Erstmeldung, \"addition\" Nachmeldung, \"correction\" Korrektur **** maybe use http://hl7.org/fhir/diagnostic-report-status",
+                    "enum": [
+                        "initial",
+                        "addition",
+                        "correction",
+                        "other"
+                    ]
+                },
+                "localCaseId": {
+                    "type": "string",
+                    "description": "T-VNk oder T-VNg: 32 Byte hexadezimal Großschreibung? Zufallswert; kollisionsfrei innerhalb eines LEs; "
+                },
+                "submitterId": {
+                    "type": "string",
+                    "description": "LE-TID nach Vorgabe des BfArM oder RVO"
+                },
+                "dataNodeId": {
+                    "type": "string",
+                    "description": "Id des klinischen Datenknotens bzw. GRZ mit den zugeordneten klinischen Daten, Format KDKXXXnnn/GRZXXXnnn 9-stellig vom BfArM vergeben"
+                },
+		"diseaseType": {
+		    "type": "string",
+		    "description": "Art der Erkrankung: OE, SE, ET",
+		    "enum": [
+			"oncological",
+			"rare",
+			"hereditary"
+		    ]
+		},
+                "dataCategory": {
+                    "type": "string",
+                    "description": "Klinisch/Genomisch",
+                    "enum": [
+                        "clinical",
+                        "genomic"
+                    ]
+                },
+                "libraryType": {
+                    "type": "string",
+                    "description": "Art der Sequenzierung oder none, falls keine Sequenzierung indiziert",
+                    "enum": [
+                        "panel",
+                        "wes",
+                        "wgs",
+                        "wgs_lr",
+			"none"
+                    ]
+                },
+                "dataQualityCheckPassed": {
+                    "type": "boolean",
+                    "description": "Lokale Datenqualitätsprüfung nach Vorgaben bestandem"
+                }
+            },
+            "required": [
+                "submissionDate",
+                "submissionType",
+                "localCaseId",
+                "submitterId",
+                "dataNodeId",
+		"diseaseType",
+		"dataCategory",
+		"libraryType",
+		"dataQualityCheckPassed"
+            ]
+	}
+    },
+    "required": [
+        "SubmittedCase"
+    ]
+}
