@@ -92,6 +92,7 @@
 		"diseaseType",
 		"dataCategory",
 		"libraryType",
+		"coverageType",
 		"dataQualityCheckPassed"
             ]
 	}
