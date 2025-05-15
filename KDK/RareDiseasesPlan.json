@@ -160,6 +160,10 @@
           "type": "string",
           "description": "Description of the recommended therapy only if 'other' is selected."
         },
+        "strategyCombination": {
+          "type": "string",
+          "description": "Description of the recommended therapy only if'combination' is selected"
+        },
         "variantReferences": {
           "type": "array",
           "items": {
