@@ -53,7 +53,23 @@
               "hereditary"
             ],
             "description": "Type of disease (must be oncological or hereditary for Oncology object, rare for RareDiseasesObject)"
-          }
+          },
+           "libraryType":{
+                  "type":"string",
+                  "description":"Library type",
+                  "enum":[
+                    "panel",
+                    "panel_lr",
+                    "wes",
+                    "wes_lr",
+                    "wgs",
+                    "wgs_lr",
+                    "wxs",
+                    "wxs_lr",
+                    "other",
+                    "unknown"
+                  ]
+                }
         },
         "required": [
           "date",
@@ -62,6 +78,7 @@
           "genomicDataCenterId",
           "clinicalDataNodeId",
           "diseaseType"
+          "libraryType"
         ]
     },
     "coverageType": {
