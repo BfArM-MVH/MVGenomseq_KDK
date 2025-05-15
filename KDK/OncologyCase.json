@@ -337,7 +337,6 @@
             },
             "required": [
                 "gene",
-                "transcript",
                 "dnaChange"
             ]
         },
