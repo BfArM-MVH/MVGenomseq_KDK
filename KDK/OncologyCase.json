@@ -240,7 +240,6 @@
                 "germlineDiagnosisConfirmed",
                 "histology",
                 "topography",
-                "diagnosticAssessment"
             ]
         },
         "PriorDiagnostic": {
