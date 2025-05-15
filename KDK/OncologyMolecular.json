@@ -191,6 +191,11 @@
         }
       },
       "required": [
+        "chromosome",
+        "startPosition",
+        "endPosition",
+        "ref",
+        "alt",
         "identifier",
         "genomicSource",
         "gene",
