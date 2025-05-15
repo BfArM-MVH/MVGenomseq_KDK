@@ -227,7 +227,7 @@
                     "enum": [
                         "noGeneticDiagnosis",
                         "suspectedGeneticDiagnosis",
-                        "furtherGeneticDiagnosicRecommended",
+                        "furtherGeneticDiagnosticRecommended",
                         "confirmedGeneticDiagnosis",
                         "partialGeneticDiagnosis"
                     ],
