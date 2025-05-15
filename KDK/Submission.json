@@ -39,7 +39,7 @@
           },
           "genomicDataCenterId": {
             "type": "string",
-            "description": "Id of the genomic data center, format GDCXXXnnn 9-digit assigned by BfArM"
+            "description": "Id of the genomic data center, format GRZXXXnnn 9-digit assigned by BfArM"
           },
           "clinicalDataNodeId": {
             "type": "string",
