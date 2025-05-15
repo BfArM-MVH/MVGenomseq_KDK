@@ -36,11 +36,6 @@
             "required": ["code"]
           }
         },
-        "hpoVersion": {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$",
-          "description": "Version HP Ontology in format x.y.z (e.g. 2.0.4)"
-        },
         "symptomOnsetDate": {
           "type": "string",
           "description": "Start of symptoms",
