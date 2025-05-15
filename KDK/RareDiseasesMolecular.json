@@ -51,9 +51,11 @@
         "genes": {
           "type": "array",
           "items": {
-            "code": {
-              "type": "string",
-              "description": "HGNC:ID"
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "HGNC:ID"
             },
             "localization": {
               "type": "string",
