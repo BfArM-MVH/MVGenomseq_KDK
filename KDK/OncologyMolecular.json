@@ -143,8 +143,18 @@
           "$ref": "#/$defs/Common/properties/gene"
         },
         "transcriptId": {
-          "type": "string",
-          "description": "Transcript ID (Ensembl/RefSeq) with version. e.g., ENST00000644379.2"
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Transcript ID (Ensembl/RefSeq) with version, e.g., ENST00000644379.2"
+            },
+            "system": {
+              "type": "string",
+              "description": "The system for the Transcript ID"
+            }
+          },
+          "required": ["code", "system"]
         },
         "dnaChange": {
           "type": "string",
