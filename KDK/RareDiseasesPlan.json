@@ -94,7 +94,7 @@
           "enum": [
             "NCT",
             "DRKS",
-            "EudraCT",
+            "Eudra-CT/CTIS",
             "other"
           ],
           "description": "Study register with priority to NCT if multiple entries exist."
