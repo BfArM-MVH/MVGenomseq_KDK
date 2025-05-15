@@ -39,7 +39,7 @@
                   ]
                 }
               },
-              "required": ["code"]
+              "required": ["code", "change"]
             }
           },
           "gmfcs": {
