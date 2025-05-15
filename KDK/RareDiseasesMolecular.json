@@ -265,7 +265,8 @@
       },
       "required": [
         "chromosome",
-        "position",
+        "startPosition",
+        "endPosition",
         "ref",
         "alt"
       ]
