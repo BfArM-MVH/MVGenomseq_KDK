@@ -330,7 +330,8 @@
                             "is",
                             "iv",
                             "Z",
-                            "R"
+                            "R",
+                            "Z(FDA)",
                         ],
                         "description": "Additional references: evidence grading."
                     }
@@ -375,7 +376,6 @@
                 "type",
                 "substances",
                 "evidenceLevel",
-                "evidenceLevelDetails",
                 "priority",
                 "therapeuticStrategy"
             ]
