@@ -209,14 +209,6 @@
                         ]
                     }
                 },
-                "tnmSystem": {
-                    "type": "string",
-                    "description": "TNM classification system. AJCC, UICC. **NOTE**: Might be removed/added to tnmClassification array in the next version."
-                },
-                "tnmVersion": {
-                    "type": "string",
-                    "description": "TNM classification version. **NOTE**: Might be removed/added to tnmClassification array in the next version."
-                },
                 "additionalClassification": {
                     "type": "object",
                     "description": "Handles cases for additional classification or where the TNM classification system (AJCC or UICC) is unknown. This provides a string alternative to the SNOMED CT coding of TNM, using a system 'TNM'.",
