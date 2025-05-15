@@ -395,7 +395,7 @@
         "identifier": {
           "$ref": "#/$defs/Common/properties/identifier"
         },
-        "sbsVersion": {
+        "Version": {
           "type": "string",
           "description": "SBS Signatures Version"
         },
@@ -406,10 +406,6 @@
             "type": "string"
           }
         },
-        "sbsSignaturePresent": {
-          "type": "boolean",
-          "description": "SBS Signature present. **Note:** This boolean implies that there could be none. SBSsignatures is an array with 0..N, so this parameter is redundant and will be removed in the future."
-        }
       },
       "required": [
         "identifier",
