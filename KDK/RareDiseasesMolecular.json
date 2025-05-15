@@ -57,18 +57,18 @@
                 "type": "string",
                 "description": "HGNC:ID"
             },
-            "localization": {
-              "type": "string",
-              "enum": [
-                "codingRegion",
-                "splicingRegion",
-                "regulatoryRegion",
-                "intronicIntergenic"
-              ],
-              "description": "Gene localization"
-            }
+          "localization": {
+            "type": "string",
+            "enum": [
+              "codingRegion",
+              "splicingRegion",
+              "regulatoryRegion",
+              "intronicIntergenic"
+            ],
+            "description": "Gene localization"
           }
-        },
+        }
+      },
         "gdnaChange": {
           "type": "string",
           "description": "gDNA change (HGVS)."
