@@ -193,38 +193,6 @@
                         ]
                     }
                 },
-                "evidenceLevel": {
-                    "type": "string",
-                    "enum": [
-                        "m1A",
-                        "m1B",
-                        "m1C",
-                        "m2A",
-                        "m2B",
-                        "m2C",
-                        "m3",
-                        "m4",
-                        "undefined"
-                    ],
-                    "description": "Evidence level based on the grading system for the MTB according to Annex 5 GKV-SV contract."
-                },
-                "evidenceLevelDetails": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "is",
-                            "iv",
-                            "Z",
-                            "R"
-                        ],
-                        "description": "Additional references: evidence grading."
-                    }
-                },
-                "priority": {
-                    "type": "integer",
-                    "description": "Prioritization."
-                },
                 "variants": {
                     "type": "array",
                     "items": {
@@ -243,10 +211,7 @@
                 "identifier",
                 "register",
                 "name",
-                "id",
-                "evidenceLevel",
-                "evidenceLevelDetails",
-                "priority"
+                "id"
             ]
         },
         "RecommendedSystemicTherapy": {
