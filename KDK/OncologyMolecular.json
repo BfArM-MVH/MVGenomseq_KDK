@@ -400,21 +400,18 @@
         "identifier": {
           "$ref": "#/$defs/Common/properties/identifier"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "description": "SBS Signatures Version"
         },
-        "sbsSignatures": {
-          "type": "array",
-          "description": "List of SBS Signatures. e.g. SBS 6",
-          "items": {
-            "type": "string"
-          }
+        "name": {
+          "type": "string",
+          "description": "Name of SBS Signature. e.g. SBS 6",
         },
       },
       "required": [
         "identifier",
-        "sbsSignatures"
+        "name"
       ]
     },
     "Variant": {
