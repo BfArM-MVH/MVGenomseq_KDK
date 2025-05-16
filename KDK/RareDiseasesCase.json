@@ -62,7 +62,7 @@
             "wes",
             "wgs",
             "wgs_lr",
-			      "none"
+	    "none"
           ],
           "description": "Art der Sequenzierung oder none, falls keine Sequenzierung indiziert",
          },
