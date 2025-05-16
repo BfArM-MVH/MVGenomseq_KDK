@@ -67,7 +67,8 @@
                "wxs",
                "wxs_lr",
                "other",
-               "unknown"
+               "unknown",
+               "none"
              ]
            }
         },
