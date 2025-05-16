@@ -222,6 +222,17 @@
                         }
                     }
                 },
+                "libraryType": {
+                    "type": "string",
+                    "enum": [
+                        "panel",
+                        "wes",
+                        "wgs",
+                        "wgs_lr",
+                        "none"
+                    ],
+                    "description": "Art der Sequenzierung oder none, falls keine Sequenzierung indiziert",
+                },
                 "diagnosticAssessment": {
                     "type": "string",
                     "enum": [
@@ -240,6 +251,7 @@
                 "germlineDiagnosisConfirmed",
                 "histology",
                 "topography",
+                "libraryType"
             ]
         },
         "PriorDiagnostic": {
