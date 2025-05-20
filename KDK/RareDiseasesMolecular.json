@@ -61,15 +61,23 @@
           }
         },    
         "localization": {
-          "type": "string",
-          "enum": [
-            "codingRegion",
-            "splicingRegion",
-            "regulatoryRegion",
-            "intronicIntergenic"
-          ],
-          "description": "Gene localization"
-        },
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Gene localization",
+                "enum": [
+                  "codingRegion",
+                  "splicingRegion",
+                  "regulatoryRegion",
+                  "intronicIntergenic"
+                ]
+              }
+            }
+          } 
+        }
         "gdnaChange": {
           "type": "string",
           "description": "gDNA change (HGVS)."
