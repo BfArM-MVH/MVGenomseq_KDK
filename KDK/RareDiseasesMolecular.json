@@ -72,7 +72,8 @@
                   "codingRegion",
                   "splicingRegion",
                   "regulatoryRegion",
-                  "intronicIntergenic"
+                  "intronic",
+                  "intergenic"
                 ]
               }
             }
