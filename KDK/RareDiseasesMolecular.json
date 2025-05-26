@@ -61,7 +61,8 @@
                 "codingRegion",
                 "splicingRegion",
                 "regulatoryRegion",
-                "intronicIntergenic"
+                "intronic",
+                "intergenic"
               ],
               "description": "Gene localization"
             }
