@@ -4,6 +4,9 @@
   "$dynamicAnchor": "carePlanRD",
   "title": "Care Plan for Rare Diseases",
   "type": "object",
+  "required": [
+    "carePlanRd"
+  ],
   "properties": {
     "carePlanRd": {
       "$ref": "#/$defs/CarePlanRd"
@@ -62,7 +65,7 @@
               "otherAmbulatoryCare",
               "gp",
               "specialist"
-            ],
+            ]
           }
         }
       },
