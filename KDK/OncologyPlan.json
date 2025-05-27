@@ -3,6 +3,9 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OnkoPlan",
     "type": "object",
+    "required": [
+        "carePlanOd"
+    ],
     "properties": {
         "carePlanOd": {
             "$ref": "#/$defs/CarePlanOd"
