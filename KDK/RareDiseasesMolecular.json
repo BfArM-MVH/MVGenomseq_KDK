@@ -78,7 +78,7 @@
               }
             }
           } 
-        }
+        },
         "gdnaChange": {
           "type": "string",
           "description": "gDNA change (HGVS)."
