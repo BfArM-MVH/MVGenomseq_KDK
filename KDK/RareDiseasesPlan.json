@@ -97,7 +97,8 @@
             "NCT",
             "DRKS",
             "Eudra-CT/CTIS",
-            "other"
+            "other",
+            "yesButStudyIsUnknown"
           ],
           "description": "Study register with priority to NCT if multiple entries exist."
         },
