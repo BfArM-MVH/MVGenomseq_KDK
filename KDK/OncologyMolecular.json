@@ -406,7 +406,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Name of SBS Signature. e.g. SBS 6",
+          "description": "Name of SBS Signature. e.g. SBS 6"
         },
       },
       "required": [
