@@ -62,7 +62,7 @@
           "clinicalDataNodeId",
           "diseaseType"
         ]
-    },
+      },
     "coverageType": {
       "type": "string",
       "description": "Health insurance providers",
@@ -203,6 +203,7 @@
         "otherReason"
       ],
       "description": "Reason for the negative decision"
+    }
     }
   }
 }
