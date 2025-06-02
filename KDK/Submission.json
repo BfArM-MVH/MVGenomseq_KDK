@@ -8,6 +8,7 @@
     "coverageType",
     "mvConsent",
     "tanC",
+    "localCaseId",
     "gender",
     "birthDate",
     "addressAGS",
@@ -165,6 +166,10 @@
     "tanC": {
       "type": "string",
       "description": "Transaction number VNk"
+    },
+    "localCaseId":{
+      "type":"string",
+      "description":"A local case identifier of the Leistungserbringer to be able to track multiple submissions referring to the same index patient"
     },
     "gender": {
       "type": "string",
