@@ -4,7 +4,8 @@
   "title": "Oncology Data Schema",
   "type": "object",
   "required": [
-    "metaData"
+    "metaData",
+    "case"
   ],
   "properties": {
     "metaData": {
