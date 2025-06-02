@@ -4,7 +4,8 @@
   "title": "Rare Diseases Data Schema",
   "type": "object",
   "required": [
-    "metaData"
+    "metaData",
+    "case"
   ],
   "properties": {
     "metaData": {
