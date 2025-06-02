@@ -177,7 +177,8 @@
             "notPerformed",
             "deNovo",
             "fromFather",
-            "fromMother"
+            "fromMother",
+            "fromMotherAndFather"
           ],
           "description": "Segregation analysis."
         },
