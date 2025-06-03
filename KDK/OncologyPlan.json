@@ -10,6 +10,12 @@
         "carePlanOd": {
             "$ref": "#/$defs/CarePlanOd"
         },
+        "recommendedStudies": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/RecommendedStudy"
+            }
+        },
         "recommendedSystemicTherapies": {
             "type": "array",
             "items": {
@@ -331,12 +337,6 @@
                         "SZ",
                         "SO"
                     ]
-                },
-                "recommendedStudies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/RecommendedStudy"
-                    }
                 }
             },
             "required": [
