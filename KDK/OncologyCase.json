@@ -210,15 +210,18 @@
                     }
                 },
                 "additionalClassification": {
-                    "type": "object",
+                    "type": "array",
                     "description": "Handles cases for additional classification or where the TNM classification system (AJCC or UICC) is unknown. This provides a string alternative to the SNOMED CT coding of TNM, using a system 'TNM'.",
-                    "properties": {
-                        "system": {
-                            "type": "string",
-                            "description": "The classification system used, e.g., 'TNM'."
-                        },
-                        "key": {
-                            "type": "string"
+                    "items" : {
+                        "type": "object",
+                        "properties": {
+                            "system": {
+                                "type": "string",
+                                "description": "The classification system used, e.g., 'TNM'."
+                                },
+                            "key": {
+                                "type": "string"
+                            }
                         }
                     }
                 },
