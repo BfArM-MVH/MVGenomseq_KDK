@@ -203,6 +203,7 @@
         }
       },
       "required": [
+        "reference",
         "therapyStartDate"
       ]
     },
