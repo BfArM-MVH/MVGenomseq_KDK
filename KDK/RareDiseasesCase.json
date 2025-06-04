@@ -114,7 +114,6 @@
       },
       "required": [
         "phenotypes",
-        "hpoVersion",
         "symptomOnsetDate",
         "molecularBoardDecisionDate",
         "diagnosticExtent",
