@@ -63,22 +63,6 @@
           "diseaseType"
         ]
       },
-    "coverageType": {
-      "type": "string",
-      "description": "Health insurance providers",
-      "enum": [
-        "GKV",
-        "PKV",
-        "BG",
-        "SEL",
-        "SOZ",
-        "GPV",
-        "PPV",
-        "BEI",
-        "SKT",
-        "UNK"
-      ]
-    },
     "mvConsent": {
       "type": "object",
       "properties": {
@@ -161,6 +145,22 @@
           }
         }
       }
+    },
+    "coverageType": {
+      "type": "string",
+      "description": "Health insurance providers",
+      "enum": [
+        "GKV",
+        "PKV",
+        "BG",
+        "SEL",
+        "SOZ",
+        "GPV",
+        "PPV",
+        "BEI",
+        "SKT",
+        "UNK"
+      ]
     },
     "tanC": {
       "type": "string",
