@@ -1,4 +1,94 @@
 # Changelog
+# Changelog
+## [1.6.4] - 2025-06-06
+### Added
+- **Oncology**
+  - Added `case` to required properties.
+- **OncologyCase**
+  - Added `libraryType` to `diagnosisOd`.
+- **OncologyFollowUp**
+  - Added `reference` to `Therapy` required properties.
+- **OncologyMolecular**
+  - Added `chromosome`, `startPosition`, `endPosition`, `ref` and `alt` to `SmallVariant` properties and added it to required properties.
+- **OncologyPlan**
+  - Added `Z(FDA)` to `evidenceLevelDetails` enum.
+  - Added `CarePlanOd` to required properties.
+- **RareDiseases**
+  - Added `case` to required properties.
+- **RareDiseasesCase** 
+  - Added `diagnosticAssessment` to `DiagnosisRd` required properties.
+  - Added `libraryType` to `diagnosisRd`.
+  - Added `version` to `DiagnosisRd.phenotypes` required properties.
+- **RareDiseasesPlan**
+  - Added `strategyCombination` to `RecommendedTherapy`.
+  - Added `yesButStudyIsUnknown` to enum of `RecommendedStudy.register`.
+- **Submission**
+  - Added `localCaseId`.
+### Changed
+- **OncologyCase**
+  - Changed the `type` of `additionalClassification` from `object` to `array`. An example of a valid `additionalClassification` array:
+    - ```json
+      {
+        "additionalClassification": [
+           {
+            "system": "TNM",
+            "key": "T2N1M0"
+           }
+        ]
+      }
+      ```
+- **OncologyMolecular**
+  - Changed the `type` of `transcriptId` from `string` to `object`. An example of a valid `transcriptId` object:
+    - ```json
+      {
+        "transcriptId": [
+          {
+            "code": "ENST00000644379.2",
+            "system": "Ensembl"
+          }
+        ]
+      }
+      ```
+- **OncologyPlan**
+  - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` and made it a property of `OncologyPlan`.
+- **RareDiseasesMolecular**
+  - Changed required properties `position` of `SmallVariant` to `startPosition` and `endPosition`.
+  -Changed `items` of `genes` from `string` to `object`. An example of a valid `genes` array:
+    - ```json
+      {
+        "genes": [
+          {
+            "code": "HGNC:1100"
+          },
+          {
+            "code": "HGNC:5173"
+          }
+        ]
+      }
+      ```
+  - Moved `localization` property from inside each `genes` item to the `Variant` object.
+  - Changed `intronicIntergenic` in enum of `Variant.localization` to `intronic` and `intergenic`.
+### Fixed
+- **OncologyCase** 
+  - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
+- **RareDiseasesCase**
+  - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
+- **RareDiseasesPlan** 
+  - Renamed enum value of `register` from `EudraCT` to `Eudra-CT/CTIS`.
+- **Submission**
+  - Fixed `GDCXXXnnn` to `GRZXXXnnn` in description of `submission.genomicDataCenterId`.
+### Removed
+- **OncologyCase**
+  - Removed `transcript` from `PriorVariants` required properties.
+- **OncologyFollowUp**
+  - Removed `therapyResponseDate` from `Therapy` required properties.
+- **OncologyPlan**
+  - Removed `evidenceLevel`, `evidenceLevelDetails` and `priority` from `CarePlanOd.RecommendedSystemicTherapy` and its required properties.
+- **RareDiseasesCase** 
+  - Removed `diagnosticAssessment` from `PriorRd` required properties.
+  - Removed `hpoVersion` from `DiagnosisRd` and its required properties.
+- **RareDiseasesPlan** 
+  - Removed `description` from `CarePlanRd.clinicalManagementDescriptions`.
 ## [1.6.3] - 2025-03-24
 ### Changed
 - **OncologyMolecular:**
