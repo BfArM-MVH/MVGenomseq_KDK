@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Molecular Report",
   "type": "object",
@@ -41,7 +41,7 @@
         "identifier": {
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
             },
             {
               "description": "Supporting molecular alteration identifier."
