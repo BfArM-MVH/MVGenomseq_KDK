@@ -1,5 +1,5 @@
 {
-    "$id": "https://www.bfarm.de/schemas/genomde/OncologyPlan.json",
+    "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyPlan.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OnkoPlan",
     "type": "object",
@@ -35,7 +35,7 @@
             "properties": {
                 "identifier": {
                     "allOf": [
-                        { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier.json" },
+                        { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
                         { "description": "Study identifier." }
                     ]
                 }
