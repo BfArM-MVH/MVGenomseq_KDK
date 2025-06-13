@@ -1,5 +1,5 @@
 {
-    "$id": "https://www.bfarm.de/schemas/genomde/OncologyPlan",
+    "$id": "https://www.bfarm.de/schemas/genomde/OncologyPlan.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OnkoPlan",
     "type": "object",
@@ -35,7 +35,7 @@
             "properties": {
                 "identifier": {
                     "allOf": [
-                        { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+                        { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier.json" },
                         { "description": "Study identifier." }
                     ]
                 }
@@ -83,7 +83,7 @@
                                     "code": {
                                         "allOf": [
                                             {
-                                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                                             },
                                             {
                                                 "type": "object",
@@ -166,7 +166,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
                             },
                             {
                                 "oneOf": [
@@ -176,7 +176,7 @@
                                             "code": {
                                                 "allOf": [
                                                     {
-                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                                        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                                                     },
                                                     {
                                                         "type": "object",
@@ -207,7 +207,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
                             },
                             {
                                 "description": "Identifier of a variant defined in OncologyMolecular."
@@ -245,7 +245,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
                             },
                             {
                                 "oneOf": [
@@ -255,7 +255,7 @@
                                             "code": {
                                                 "allOf": [
                                                     {
-                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                                        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                                                     },
                                                     {
                                                         "type": "object",
@@ -319,7 +319,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
                             },
                             {
                                 "description": "Identifier of a variant defined in OncologyMolecular."
