@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/OncologyFollowUp",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyFollowUp.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$dynamicAnchor": "followUpOD",
   "title": "Follow-Up Oncological Data",
@@ -32,7 +32,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Coding.json"
               },
               {
                 "type": "object",
@@ -112,7 +112,7 @@
       "properties": {
         "reference": {
           "allOf": [
-            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Identifier.json" },
             { "description": "Identifier of the recommended systemic therapies." }
           ]
         },
@@ -146,7 +146,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Substance.json"
               },
               {
                 "oneOf": [
@@ -156,7 +156,7 @@
                       "code": {
                         "allOf": [
                           {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Coding.json"
                           },
                           {
                             "type": "object",
@@ -212,7 +212,7 @@
       "properties": {
         "reference": {
           "allOf": [
-            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Identifier.json" },
             { "description": "Identifier of the preventive measure." }
           ]
         },
