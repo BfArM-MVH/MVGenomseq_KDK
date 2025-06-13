@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesFollowUp",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
@@ -20,7 +20,7 @@
               "description": "Phenotyping based on the HPO ontology.",
               "allOf": [
                 {
-                  "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                  "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                 }
               ],
               "properties": {
