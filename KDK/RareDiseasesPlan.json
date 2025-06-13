@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesPlan",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesPlan.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$dynamicAnchor": "carePlanRD",
   "title": "Care Plan for Rare Diseases",
@@ -84,7 +84,7 @@
         "identifier": {
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
             },
             {
               "description": "Identifier for the recommended study."
@@ -112,7 +112,7 @@
         "variants": {
           "type": "array",
           "items": {
-            "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#/$defs/variants"
+            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular.json/$defs/variants"
           }
         }
       },
@@ -129,7 +129,7 @@
         "identifier": {
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
             },
             {
               "description": "Identifier for the recommended therapy."
@@ -172,7 +172,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
               },
               {
                 "description": "Identifier of a variant defined in RareDiseasesMolecular."
