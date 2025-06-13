@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesCase",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesCase",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Data Schema",
   "type": "object",
@@ -24,7 +24,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "type": "object",
@@ -87,7 +87,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "required": [ "code", "system", "version" ]
