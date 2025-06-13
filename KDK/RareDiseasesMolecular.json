@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Molecular Report",
   "type": "object",
