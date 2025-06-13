@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/OncologyMolecular",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyMolecular.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Oncology Molecular Report",
   "description": "Schema for molecular report in oncology, including various variant types.",
@@ -57,7 +57,7 @@
           "description": "Gene symbol (HGNC) and HGNC ID. e.g., HGNC:1100",
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
             },
             {
               "required": [
@@ -78,7 +78,7 @@
         },
         "identifier": {
           "allOf": [
-            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
             { "description": "Unique identifier for the variant." }
           ]
         }
@@ -169,7 +169,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "required": [
