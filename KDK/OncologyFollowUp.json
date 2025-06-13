@@ -32,7 +32,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Coding.json"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "type": "object",
@@ -112,7 +112,7 @@
       "properties": {
         "reference": {
           "allOf": [
-            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Identifier.json" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
             { "description": "Identifier of the recommended systemic therapies." }
           ]
         },
@@ -146,7 +146,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Substance.json"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
               },
               {
                 "oneOf": [
@@ -156,7 +156,7 @@
                       "code": {
                         "allOf": [
                           {
-                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Coding.json"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                           },
                           {
                             "type": "object",
@@ -212,7 +212,7 @@
       "properties": {
         "reference": {
           "allOf": [
-            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Identifier.json" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
             { "description": "Identifier of the preventive measure." }
           ]
         },
