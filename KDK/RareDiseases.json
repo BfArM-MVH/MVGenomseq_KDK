@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseases",
+  "$id": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseases",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Data Schema",
   "type": "object",
@@ -9,19 +9,19 @@
   ],
   "properties": {
     "metaData": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/Submission#"
+      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Submission#"
     },
     "case": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesCase#"
+      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesCase#"
     },
     "molecular": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#"
+      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular#"
     },
     "plan": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesPlan#"
+      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesPlan#"
     },
     "followUp": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesFollowUp#"
+      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp#"
     }
   }
 }
