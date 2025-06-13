@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/Oncology",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Oncology.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Oncology Data Schema",
   "type": "object",
@@ -9,19 +9,19 @@
   ],
   "properties": {
     "metaData": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/Submission#"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Submission.json"
     },
     "case": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/OncologyCase#"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyCase.json"
     },
     "molecular": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/OncologyMolecular#"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyMolecular.json"
     },
     "plan": {
-        "$ref": "https://www.bfarm.de/schemas/genomde/OncologyPlan#"
+        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyPlan.json"
     },
     "followUp": {
-        "$ref": "https://www.bfarm.de/schemas/genomde/OncologyFollowUp#"
+        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyFollowUp.json"
     }
   }
 }
