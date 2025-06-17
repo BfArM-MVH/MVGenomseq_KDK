@@ -35,8 +35,8 @@
         "$ref": "#/$defs/ComplexBiomarker"
       }
     },
-    "sbsSignatures": {
-      "type": "array",
+    "sbs": {
+      "type": "object",
       "items": {
         "$ref": "#/$defs/SbsSignature"
       }
@@ -404,14 +404,17 @@
           "type": "string",
           "description": "SBS Signatures Version"
         },
-        "name": {
-          "type": "string",
-          "description": "Name of SBS Signature. e.g. SBS 6"
-        },
+        "sbsSignatures": {
+          "type": "array",
+          "description": "List of SBS Signatures. e.g. SBS 6",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "required": [
         "identifier",
-        "name"
+        "sbsSignatures"
       ]
     },
     "Variant": {
