@@ -54,6 +54,35 @@
           "minItems": 1,
           "description": "Diagnosis code and version for metachronous tumors."
         },
+        "phenotypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "Phenotyping based on the HPO ontology.",
+            "allOf": [
+              {
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
+              }
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Clinical description of the phenotype"
+              },
+              "change": {
+                "type": "string",
+                "enum": [
+                  "newlyAdded",
+                  "improved",
+                  "degraded",
+                  "noLongerObserved",
+                  "unchanged"
+                ]
+              }
+            },
+            "required": ["code", "change"]
+          }
+        },
         "ecogPerformanceStatusScore": {
           "type": "string",
           "enum": [
