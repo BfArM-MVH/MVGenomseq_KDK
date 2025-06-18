@@ -101,7 +101,7 @@
           "properties": {
             "code": {
               "type": "string",
-              "description": "Transcript ID (Ensembl/RefSeq) with version, e.g., ENST00000644379.2"
+              "description": "Transcript ID (Ensembl/RefSeq), e.g., ENST00000644379"
             },
             "system": {
               "type": "string",
