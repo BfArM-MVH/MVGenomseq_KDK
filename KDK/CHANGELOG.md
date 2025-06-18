@@ -8,7 +8,6 @@
 - **OncologyFollowUp**
   - Added `reference` to `Therapy` required properties.
   - Added `phenotypes` to `FollowUpOd`.
-  - Added HPO to "FollowUpOd" properties.
 - **OncologyMolecular**
   - Added `chromosome`, `startPosition`, `endPosition`, `ref` and `alt` to `SmallVariant` properties and added it to its required properties.
 - **OncologyPlan**
@@ -96,7 +95,7 @@
   - Removed `diagnosticAssessment` from `PriorRd` required properties.
   - Removed `hpoVersion` from `DiagnosisRd` and its required properties.
 - **RareDiseasesMolecular**
-  - Removed 'variants' array from top level; 'Variant' now is an abstract base definition that serves purely as a base class for every other variant type. 
+  - Removed `variants` array from top level; `Variant` now is an abstract base definition that serves purely as a base class for every other variant type. 
 - **RareDiseasesPlan** 
   - Removed `description` from `CarePlanRd.clinicalManagementDescriptions`.
 ## [1.6.3] - 2025-03-24
