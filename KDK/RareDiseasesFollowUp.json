@@ -2,6 +2,9 @@
   "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "required": [
+    "followUpRds"
+  ],
   "properties": {
     "followUpRds": {
       "type": "array",
@@ -76,6 +79,7 @@
         },
         "required": [
           "followUpDate",
+          "phenotypes",
           "diagnosisEstablished",
           "vitalStatus"
         ]
@@ -83,8 +87,5 @@
       "minItems": 1,
       "description": "For each of the several followups, a new object with the current status is created."
     }
-  },
-  "required": [
-    "followUpRds"
-  ]
+  }
 }
