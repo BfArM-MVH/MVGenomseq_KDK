@@ -3,17 +3,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Molecular Report",
   "type": "object",
-  "required": [
-    "variants"
-  ],
   "properties": {
-    "variants": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/Variant"
-      },
-      "minItems": 1
-    },
     "structuralVariants": {
       "type": "array",
       "items": {
@@ -36,7 +26,7 @@
   "$defs": {
     "Variant": {
       "type": "object",
-      "description": "For all variants",
+      "description": "Abstract base class for all variant types",
       "properties": {
         "identifier": {
           "allOf": [
@@ -218,126 +208,147 @@
       ]
     },
     "StructuralVariant": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string",
-          "description": "ISCN Description."
+      "allOf": [
+        {
+          "$ref": "#/$defs/Variant"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "ISCN Description."
+            }
+          }
         }
-      }
+      ]
     },
     "SmallVariant": {
-      "type": "object",
-      "properties": {
-        "chromosome": {
-          "type": "string",
-          "enum": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "X",
-            "Y",
-            "MT"
+      "allOf": [
+        {
+          "$ref": "#/$defs/Variant"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "chromosome": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "X",
+                "Y",
+                "MT"
+              ]
+            },
+            "startPosition": {
+              "type": "integer",
+              "description": "Start coordinate in GRCh38 VCF-style."
+            },
+            "endPosition": {
+              "type": "integer",
+              "description": "End coordinate in GRCh38 VCF-style."
+            },
+            "ref": {
+              "type": "string",
+              "description": "ref sequence VCF-style."
+            },
+            "alt": {
+              "type": "string",
+              "description": "alt/observed sequence VCF-style."
+            }
+          },
+          "required": [
+            "chromosome",
+            "startPosition",
+            "endPosition",
+            "ref",
+            "alt"
           ]
-        },
-        "startPosition": {
-          "type": "integer",
-          "description": "Start coordinate in GRCh38 VCF-style."
-        },
-        "endPosition": {
-          "type": "integer",
-          "description": "End coordinate in GRCh38 VCF-style."
-        },
-        "ref": {
-          "type": "string",
-          "description": "ref sequence VCF-style."
-        },
-        "alt": {
-          "type": "string",
-          "description": "alt/observed sequence VCF-style."
         }
-      },
-      "required": [
-        "chromosome",
-        "startPosition",
-        "endPosition",
-        "ref",
-        "alt"
       ]
     },
     "CopyNumberVariant": {
-      "type": "object",
-      "properties": {
-        "chromosome": {
-          "type": "string",
-          "enum": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "X",
-            "Y",
-            "MT"
-          ]
+      "allOf": [
+        {
+          "$ref": "#/$defs/Variant"
         },
-        "startPosition": {
-          "type": "integer",
-          "description": "GRCh38 coordinate VCF-style."
-        },
-        "endPosition": {
-          "type": "integer",
-          "description": "GRCh38 coordinate VCF-style."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "gain",
-            "loss"
+        {
+          "type": "object",
+          "properties": {
+            "chromosome": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "X",
+                "Y",
+                "MT"
+              ]
+            },
+            "startPosition": {
+              "type": "integer",
+              "description": "GRCh38 coordinate VCF-style."
+            },
+            "endPosition": {
+              "type": "integer",
+              "description": "GRCh38 coordinate VCF-style."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "gain",
+                "loss"
+              ]
+            }
+          },
+          "required": [
+            "chromosome",
+            "startPosition",
+            "endPosition",
+            "type"
           ]
         }
-      },
-      "required": [
-        "chromosome",
-        "startPosition",
-        "endPosition",
-        "type"
       ]
     }
   }
