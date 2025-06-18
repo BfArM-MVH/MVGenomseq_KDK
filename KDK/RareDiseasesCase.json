@@ -117,7 +117,7 @@
         "symptomOnsetDate",
         "molecularBoardDecisionDate",
         "diagnosticExtent",
-        "libraryType"
+        "libraryType",
         "diagnosticAssessment",
         "diagnoses"
       ]
@@ -196,6 +196,8 @@
       },
       "required": [
         "genomicTestType",
+	"genomicStudyType",
+	"diagnosticResult",
         "hospitalizationPeriods",
         "hospitalizationDuration",
         "zseContactDate"
