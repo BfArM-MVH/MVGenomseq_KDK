@@ -202,6 +202,39 @@
                         ]
                     }
                 },
+                "evidenceLevel": {
+                    "type": "string",
+                    "enum": [
+                        "m1A",
+                        "m1B",
+                        "m1C",
+                        "m2A",
+                        "m2B",
+                        "m2C",
+                        "m3",
+                        "m4",
+                        "undefined"
+                    ],
+                    "description": "Evidence level."
+                },
+                "evidenceLevelDetails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "is",
+                            "iv",
+                            "Z",
+                            "R",
+                            "Z(FDA)"
+                        ],
+                        "description": "Additional references: evidence grading."
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Prioritization."
+                },
                 "variants": {
                     "type": "array",
                     "items": {
@@ -220,7 +253,9 @@
                 "identifier",
                 "register",
                 "name",
-                "id"
+                "id",
+                "evidenceLevel",
+                "priority"
             ]
         },
         "RecommendedSystemicTherapy": {
@@ -334,6 +369,10 @@
                         "HO",
                         "IM",
                         "ZS",
+                        "CI",
+                        "CZ",
+                        "CIZ",
+                        "IZ",
                         "SZ",
                         "SO"
                     ]
@@ -365,7 +404,4 @@
             ]
         }
     }
-      "required": [
-          "CarePlanOd"
-      ]
 }
