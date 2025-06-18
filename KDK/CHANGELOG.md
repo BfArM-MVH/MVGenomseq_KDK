@@ -8,17 +8,23 @@
   - Added `libraryType` to `diagnosisOd`.
 - **OncologyFollowUp**
   - Added `reference` to `Therapy` required properties.
+  - Added `phenotypes` to `FollowUpOd`.
 - **OncologyMolecular**
-  - Added `chromosome`, `startPosition`, `endPosition`, `ref` and `alt` to `SmallVariant` properties and added it to required properties.
+  - Added `chromosome`, `startPosition`, `endPosition`, `ref` and `alt` to `SmallVariant` properties and added it to its required properties.
 - **OncologyPlan**
-  - Added `Z(FDA)` to `evidenceLevelDetails` enum.
+  - Added `Z(FDA)` to `RecommendedSystemicTherapy.evidenceLevelDetails` enum.
   - Added `CarePlanOd` to required properties.
+  - Added `evidenceLevel`,`evidenceLevelDetails` and `priority` to `RecommendedStudy` and added `evidenceLevel` and `priority` to its required properties.
+  - Added `CI`,`CZ`,`CIZ` and `IZ` to enum of `RecommendedSystemicTherapy.therapeuticStrategy`.
 - **RareDiseases**
   - Added `case` to required properties.
 - **RareDiseasesCase** 
   - Added `diagnosticAssessment` to `DiagnosisRd` required properties.
   - Added `libraryType` to `diagnosisRd`.
   - Added `version` to `DiagnosisRd.phenotypes` required properties.
+  - Added `genomicStudyType` and `diagnosticResult` to `PriorRd` required properties.
+- **RareDiseasesFollowUp**
+  - Added `phenotypes` to `followUpRds` required properties.
 - **RareDiseasesPlan**
   - Added `strategyCombination` to `RecommendedTherapy`.
   - Added `yesButStudyIsUnknown` to enum of `RecommendedStudy.register`.
@@ -43,17 +49,17 @@
       {
         "transcriptId": [
           {
-            "code": "ENST00000644379.2",
+            "code": "ENST00000644379",
             "system": "Ensembl"
           }
         ]
       }
       ```
 - **OncologyPlan**
-  - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` and made it a property of `OncologyPlan`.
+  - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` to properties of `OncologyPlan`.
 - **RareDiseasesMolecular**
   - Changed required properties `position` of `SmallVariant` to `startPosition` and `endPosition`.
-  -Changed `items` of `genes` from `string` to `object`. An example of a valid `genes` array:
+  - Changed `items` of `genes` from `string` to `object`. An example of a valid `genes` array:
     - ```json
       {
         "genes": [
@@ -82,6 +88,8 @@
   - Removed `transcript` from `PriorVariants` required properties.
 - **OncologyFollowUp**
   - Removed `therapyResponseDate` from `Therapy` required properties.
+- **OncologyMolecular**
+  - Removed version from description of `transcriptId`.
 - **OncologyPlan**
   - Removed `evidenceLevel`, `evidenceLevelDetails` and `priority` from `CarePlanOd.RecommendedSystemicTherapy` and its required properties.
 - **RareDiseasesCase** 
