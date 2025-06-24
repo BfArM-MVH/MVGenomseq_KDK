@@ -73,6 +73,8 @@
       ```
   - Moved `localization` property from inside each `genes` item to the `Variant` object.
   - Changed `intronicIntergenic` in enum of `Variant.localization` to `intronic` and `intergenic`.
+- **Submission**
+  - Renamed ``inclusionBoardDecisionDate`` to ``molecularBoardDecisionDate``.
 ### Fixed
 - **OncologyCase** 
   - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
