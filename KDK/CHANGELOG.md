@@ -75,6 +75,8 @@
       ```
   - Moved `localization` property from inside each `genes` item to the `Variant` object.
   - Changed `intronicIntergenic` in enum of `Variant.localization` to `intronic` and `intergenic`.
+- **RareDiseasesPlan**
+  - Change `RecommendedStudy.variants` to only include `identifier`.
 - **Submission**
   - Renamed ``inclusionBoardDecisionDate`` to ``molecularBoardDecisionDate``.
 ### Fixed
