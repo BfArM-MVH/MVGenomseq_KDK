@@ -112,7 +112,14 @@
         "variants": {
           "type": "array",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular.json/$defs/variants"
+            "allOf": [
+              {
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
+              },
+              {
+                "description": "Identifier of a variant defined in RareDiseasesMolecular."
+              }
+            ]
           }
         }
       },
