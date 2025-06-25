@@ -42,6 +42,8 @@
         ]
       }
       ```
+- **OncologyFollowUp**
+  - Change description of `therapy.refernce` to `Identifier of the recommended systemic therapies or new identifier for future reference.`.
 - **OncologyMolecular**
   - Changed the `type` of `transcriptId` from `string` to `object`. An example of a valid `transcriptId` object:
     - ```json
