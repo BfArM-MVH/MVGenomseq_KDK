@@ -56,7 +56,7 @@
         ]
       }
       ```
-  - Changed `sbsSignatures` to array containing `identifier`, `version` and an array `name`. An example of a valid `sbsSignatures` array:
+  - Changed `sbsSignatures` to array with an `sbsSignature` object containing `identifier`, `version` and an array `name`. An example of a valid `sbsSignature` object:
     - ```json
       {
         "SbsSignature": [
@@ -64,10 +64,6 @@
             "identifier": "sig-001",
             "version": "v3.2",
             "sbsSignatures": ["SBS6", "SBS15"]
-          },
-          {
-            "identifier": "sig-002",
-            "sbsSignatures": ["SBS17"]
           }
         ]
       }
