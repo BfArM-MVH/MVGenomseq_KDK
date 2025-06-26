@@ -63,7 +63,7 @@
           {
             "identifier": "sig-001",
             "version": "v3.2",
-            "sbsSignatures": ["SBS6", "SBS15"]
+            "name": ["SBS6", "SBS15"]
           }
         ]
       }
