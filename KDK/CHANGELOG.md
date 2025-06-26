@@ -56,6 +56,22 @@
         ]
       }
       ```
+  - Changed `sbsSignatures` to array containing `identifier`, `version` and an array `name`. An example of a valid `sbsSignatures` array:
+    - ```json
+      {
+        "SbsSignature": [
+          {
+            "identifier": "sig-001",
+            "version": "v3.2",
+            "sbsSignatures": ["SBS6", "SBS15"]
+          },
+          {
+            "identifier": "sig-002",
+            "sbsSignatures": ["SBS17"]
+          }
+        ]
+      }
+      ```
 - **OncologyPlan**
   - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` to properties of `OncologyPlan`.
 - **RareDiseasesMolecular**
