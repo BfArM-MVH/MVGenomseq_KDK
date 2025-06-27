@@ -181,35 +181,47 @@
                 "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
               },
               {
-                "oneOf": [
-                  {
-                    "required": ["code"],
-                    "properties": {
-                      "code": {
-                        "allOf": [
-                          {
-                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
-                          },
-                          {
-                            "type": "object",
-                            "required": [
-                              "system",
-                              "code",
-                              "version"
-                            ]
-                          }
-                        ]
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "allOf": [
+                      {
+                        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                       },
-                      "name": { "not": {} }
-                    }
+                      {
+                        "type": "object",
+                        "description": "ATC code of active substance or pharmacological class",
+                        "required": [
+                          "system",
+                          "code",
+                          "version"
+                        ]
+                      }
+                    ]
                   },
-                  {
-                    "required": ["name"],
-                    "properties": {
-                      "code": { "not": {} }
+                  "name": {
+                    "type": "string",
+                    "description": "Name of active substance is required when only pharmacological class is given."
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "code": {
+                      "properties": {
+                        "code": {
+                          "not": {
+                            "pattern": "^[A-Z][0-9]{2}[A-Z]{2}[0-9]{2}$"
+                          }
+                        }
+                      }
                     }
                   }
-                ]
+                },
+                "then": {
+                  "required": [
+                    "name"
+                  ]
+                }
               }
             ]
           }
