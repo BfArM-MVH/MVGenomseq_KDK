@@ -42,8 +42,52 @@
         ]
       }
       ```
+  - Changed logic of `prioProcedures.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
 - **OncologyFollowUp**
   - Change description of `therapy.refernce` to `Identifier of the recommended systemic therapies or, if not available, new identifier for future reference.`.
+  - Changed logic of `therapies.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
 - **OncologyMolecular**
   - Changed the `type` of `transcriptId` from `string` to `object`. An example of a valid `transcriptId` object:
     - ```json
@@ -70,6 +114,28 @@
       ```
 - **OncologyPlan**
   - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` to properties of `OncologyPlan`.
+  - Changed logic of `recommendedStudies.substances` and `recommendedSystemicTherapies.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
 - **RareDiseasesMolecular**
   - Changed required properties `position` of `SmallVariant` to `startPosition` and `endPosition`.
   - Changed `items` of `genes` from `string` to `object`. An example of a valid `genes` array:
