@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/Submission",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Submission.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Submission and Consent MetaData Sub-schema",
   "type": "object",
@@ -12,7 +12,7 @@
     "birthDate",
     "addressAGS",
     "decisionToInclude",
-    "inclusionBoardDecisionDate"
+    "molecularBoardDecisionDate"
   ],
   "properties": {
     "submission": {
@@ -39,7 +39,7 @@
           },
           "genomicDataCenterId": {
             "type": "string",
-            "description": "Id of the genomic data center, format GDCXXXnnn 9-digit assigned by BfArM"
+            "description": "Id of the genomic data center, format GRZXXXnnn 9-digit assigned by BfArM. Not required in cases where diagnosisOd.libraryType = none."
           },
           "clinicalDataNodeId": {
             "type": "string",
@@ -53,13 +53,11 @@
               "hereditary"
             ],
             "description": "Type of disease (must be oncological or hereditary for Oncology object, rare for RareDiseasesObject)"
-          }
-        },
+          },
         "required": [
           "date",
           "type",
           "submitterId",
-          "genomicDataCenterId",
           "clinicalDataNodeId",
           "diseaseType"
         ]
@@ -163,13 +161,13 @@
         "UNK"
       ]
     },
-    "localCaseId":{
-      "type": "string",
-      "description": "ID for the local case identifiaction by LE."
-    },
     "tanC": {
       "type": "string",
       "description": "Transaction number VNk"
+    },
+    "localCaseId":{
+      "type":"string",
+      "description":"A local case identifier of the Leistungserbringer to be able to track multiple submissions referring to the same index patient"
     },
     "gender": {
       "type": "string",
@@ -193,7 +191,7 @@
       "type": "boolean",
       "description": "Decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project"
     },
-    "inclusionBoardDecisionDate": {
+    "molecularBoardDecisionDate": {
       "type": "string",
       "description": "Date of the decision of the multidisciplinary case conference in the field of diagnostics on the inclusion of the insured person in the pilot project",
       "format": "date"
@@ -208,6 +206,7 @@
         "otherReason"
       ],
       "description": "Reason for the negative decision"
+    }
     }
   }
 }

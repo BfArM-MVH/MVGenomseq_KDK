@@ -1,9 +1,12 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesPlan",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesPlan.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$dynamicAnchor": "carePlanRD",
   "title": "Care Plan for Rare Diseases",
   "type": "object",
+  "required": [
+    "carePlanRd"
+  ],
   "properties": {
     "carePlanRd": {
       "$ref": "#/$defs/CarePlanRd"
@@ -62,8 +65,7 @@
               "otherAmbulatoryCare",
               "gp",
               "specialist"
-            ],
-            "description": "Description of clinical management, e.g., hearing test, ultrasound."
+            ]
           }
         }
       },
@@ -82,7 +84,7 @@
         "identifier": {
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
             },
             {
               "description": "Identifier for the recommended study."
@@ -94,8 +96,9 @@
           "enum": [
             "NCT",
             "DRKS",
-            "EudraCT",
-            "other"
+            "Eudra-CT/CTIS",
+            "other",
+            "yesButStudyIsUnknown"
           ],
           "description": "Study register with priority to NCT if multiple entries exist."
         },
@@ -109,7 +112,14 @@
         "variants": {
           "type": "array",
           "items": {
-            "$ref": "https://www.bfarm.de/schemas/genomde/RareDiseasesMolecular#/$defs/variants"
+            "allOf": [
+              {
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
+              },
+              {
+                "description": "Identifier of a variant defined in RareDiseasesMolecular."
+              }
+            ]
           }
         }
       },
@@ -126,7 +136,7 @@
         "identifier": {
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
             },
             {
               "description": "Identifier for the recommended therapy."
@@ -160,12 +170,16 @@
           "type": "string",
           "description": "Description of the recommended therapy only if 'other' is selected."
         },
+        "strategyCombination": {
+          "type": "string",
+          "description": "Description of the recommended therapy only if'combination' is selected."
+        },
         "variantReferences": {
           "type": "array",
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
               },
               {
                 "description": "Identifier of a variant defined in RareDiseasesMolecular."

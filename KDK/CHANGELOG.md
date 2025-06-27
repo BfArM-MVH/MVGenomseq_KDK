@@ -1,4 +1,188 @@
 # Changelog
+## [1.6.4] - 2025-06-06
+### Added
+- **Oncology**
+  - Added `case` to required properties.
+- **OncologyCase**
+  - Added `libraryType` to `diagnosisOd`.
+- **OncologyFollowUp**
+  - Added `reference` to `Therapy` required properties.
+  - Added `phenotypes` to `FollowUpOd`.
+- **OncologyMolecular**
+  - Added `chromosome`, `startPosition`, `endPosition`, `ref` and `alt` to `SmallVariant` properties and added it to its required properties.
+- **OncologyPlan**
+  - Added `Z(FDA)` to `RecommendedSystemicTherapy.evidenceLevelDetails` enum.
+  - Added `CarePlanOd` to required properties.
+  - Added `evidenceLevel`,`evidenceLevelDetails` and `priority` to `RecommendedStudy` and added `evidenceLevel` and `priority` to its required properties.
+  - Added `CI`,`CZ`,`CIZ` and `IZ` to enum of `RecommendedSystemicTherapy.therapeuticStrategy`.
+- **RareDiseases**
+  - Added `case` to required properties.
+- **RareDiseasesCase** 
+  - Added `diagnosticAssessment` to `DiagnosisRd` required properties.
+  - Added `libraryType` to `diagnosisRd`.
+  - Added `version` to `DiagnosisRd.phenotypes` required properties.
+  - Added `genomicStudyType` and `diagnosticResult` to `PriorRd` required properties.
+- **RareDiseasesFollowUp**
+  - Added `phenotypes` to `followUpRds` required properties.
+- **RareDiseasesPlan**
+  - Added `strategyCombination` to `RecommendedTherapy`.
+  - Added `yesButStudyIsUnknown` to enum of `RecommendedStudy.register`.
+- **Submission**
+  - Added `localCaseId`.
+### Changed
+- **OncologyCase**
+  - Changed the `type` of `additionalClassification` from `object` to `array`. An example of a valid `additionalClassification` array:
+    - ```json
+      {
+        "additionalClassification": [
+           {
+            "system": "TNM",
+            "key": "T2N1M0"
+           }
+        ]
+      }
+      ```
+  - Changed logic of `prioProcedures.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
+- **OncologyFollowUp**
+  - Change description of `therapy.refernce` to `Identifier of the recommended systemic therapies or, if not available, new identifier for future reference.`.
+  - Changed logic of `therapies.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
+- **OncologyMolecular**
+  - Changed the `type` of `transcriptId` from `string` to `object`. An example of a valid `transcriptId` object:
+    - ```json
+      {
+        "transcriptId": [
+          {
+            "code": "ENST00000644379",
+            "system": "Ensembl"
+          }
+        ]
+      }
+      ```
+  - Changed `sbsSignatures` to array with an `sbsSignature` object containing `identifier`, `version` and an array `name`. An example of a valid `sbsSignature` object:
+    - ```json
+      {
+        "SbsSignature": [
+          {
+            "identifier": "sig-001",
+            "version": "v3.2",
+            "name": ["SBS6", "SBS15"]
+          }
+        ]
+      }
+      ```
+- **OncologyPlan**
+  - Moved `recommendedStudies` from properties of `RecommendedSystemicTherapy` to properties of `OncologyPlan`.
+  - Changed logic of `recommendedStudies.substances` and `recommendedSystemicTherapies.substances`, so that `name` is only required when ATC code in `code.code` does not describe the acitve substance (ATC level 5). An example of a valid `substances` object:
+    - ```json
+      {
+        "substances": [
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01AB02",
+              "version": "04/2025"
+            }
+          },
+          {
+            "code": {
+              "system": "ATC-Code",
+              "code": "A01",
+              "version": "04/2025"
+            },
+            "name": "Stomatologika"
+          }
+        ]
+      }
+      ```
+- **RareDiseasesMolecular**
+  - Changed required properties `position` of `SmallVariant` to `startPosition` and `endPosition`.
+  - Changed `items` of `genes` from `string` to `object`. An example of a valid `genes` array:
+    - ```json
+      {
+        "genes": [
+          {
+            "code": "HGNC:1100"
+          },
+          {
+            "code": "HGNC:5173"
+          }
+        ]
+      }
+      ```
+  - Moved `localization` property from inside each `genes` item to the `Variant` object.
+  - Changed `intronicIntergenic` in enum of `Variant.localization` to `intronic` and `intergenic`.
+- **RareDiseasesPlan**
+  - Change `RecommendedStudy.variants` to only include `identifier`.
+- **Submission**
+  - Renamed `inclusionBoardDecisionDate` to `molecularBoardDecisionDate`.
+  - Add `Not required in cases where diagnosisOd.libraryType = "none".` to `description` of `diagnosisOd.genomicCentreId` and removed it from required properties.
+### Fixed
+- **OncologyCase** 
+  - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
+- **RareDiseasesCase**
+  - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
+- **RareDiseasesPlan** 
+  - Renamed enum value of `register` from `EudraCT` to `Eudra-CT/CTIS`.
+- **Submission**
+  - Fixed `GDCXXXnnn` to `GRZXXXnnn` in description of `submission.genomicDataCenterId`.
+### Removed
+- **OncologyCase**
+  - Removed `transcript` from `PriorVariants` required properties.
+- **OncologyFollowUp**
+  - Removed `therapyResponseDate` from `Therapy` required properties.
+- **OncologyMolecular**
+  - Removed version from description of `transcriptId`.
+- **OncologyPlan**
+  - Removed `evidenceLevel`, `evidenceLevelDetails` and `priority` from `CarePlanOd.RecommendedSystemicTherapy` and its required properties.
+- **RareDiseasesCase** 
+  - Removed `diagnosticAssessment` from `PriorRd` required properties.
+  - Removed `hpoVersion` from `DiagnosisRd` and its required properties.
+- **RareDiseasesMolecular**
+  - Removed `variants` array from top level; `Variant` now is an abstract base definition that serves purely as a base class for every other variant type. 
+- **RareDiseasesPlan** 
+  - Removed `description` from `CarePlanRd.clinicalManagementDescriptions`.
 ## [1.6.3] - 2025-03-24
 ### Changed
 - **OncologyMolecular:**

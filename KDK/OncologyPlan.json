@@ -1,11 +1,20 @@
 {
-    "$id": "https://www.bfarm.de/schemas/genomde/OncologyPlan",
+    "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyPlan.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OnkoPlan",
     "type": "object",
+    "required": [
+        "carePlanOd"
+    ],
     "properties": {
         "carePlanOd": {
             "$ref": "#/$defs/CarePlanOd"
+        },
+        "recommendedStudies": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/RecommendedStudy"
+            }
         },
         "recommendedSystemicTherapies": {
             "type": "array",
@@ -26,7 +35,7 @@
             "properties": {
                 "identifier": {
                     "allOf": [
-                        { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+                        { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
                         { "description": "Study identifier." }
                     ]
                 }
@@ -74,7 +83,7 @@
                                     "code": {
                                         "allOf": [
                                             {
-                                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                                             },
                                             {
                                                 "type": "object",
@@ -157,152 +166,44 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
                             },
                             {
-                                "oneOf": [
-                                    {
-                                        "required": ["code"],
-                                        "properties": {
-                                            "code": {
-                                                "allOf": [
-                                                    {
-                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
-                                                    },
-                                                    {
-                                                        "type": "object",
-                                                        "required": [
-                                                            "system",
-                                                            "code",
-                                                            "version"
-                                                        ]
-                                                    }
-                                                ]
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                                             },
-                                            "name": { "not": {} }
-                                        }
+                                            {
+                                                "type": "object",
+                                                "description": "ATC code of active substance or pharmacological class",
+                                                "required": ["system", "code", "version"]
+                                            }
+                                        ]
                                     },
-                                    {
-                                        "required": ["name"],
-                                        "properties": {
-                                            "code": { "not": {} }
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of active substance is required when only pharmacological class is given."
+                                    }
+                                },
+                                "if": {
+                                    "properties": {
+                                        "code": {
+                                            "properties": {
+                                                "code": {
+                                                    "not": {
+                                                        "pattern": "^[A-Z][0-9]{2}[A-Z]{2}[0-9]{2}$"
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
-                                ]
-                            }
-                        ]
-                    }
-                },
-                "evidenceLevel": {
-                    "type": "string",
-                    "enum": [
-                        "m1A",
-                        "m1B",
-                        "m1C",
-                        "m2A",
-                        "m2B",
-                        "m2C",
-                        "m3",
-                        "m4",
-                        "undefined"
-                    ],
-                    "description": "Evidence level based on the grading system for the MTB according to Annex 5 GKV-SV contract."
-                },
-                "evidenceLevelDetails": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "is",
-                            "iv",
-                            "Z",
-                            "R"
-                        ],
-                        "description": "Additional references: evidence grading."
-                    }
-                },
-                "priority": {
-                    "type": "integer",
-                    "description": "Prioritization."
-                },
-                "variants": {
-                    "type": "array",
-                    "items": {
-                        "allOf": [
-                            {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
-                            },
-                            {
-                                "description": "Identifier of a variant defined in OncologyMolecular."
-                            }
-                        ]
-                    }
-                }
-            },
-            "required": [
-                "identifier",
-                "register",
-                "name",
-                "id",
-                "evidenceLevel",
-                "evidenceLevelDetails",
-                "priority"
-            ]
-        },
-        "RecommendedSystemicTherapy": {
-            "type": "object",
-            "properties": {
-                "identifier": {
-                   "$ref": "#/$defs/Common/properties/identifier"
-                },
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "inLabel",
-                        "offLabel",
-                        "compassionateUse",
-                        "unknown",
-                        "secPreventive"
-                    ],
-                    "description": "Recommendation systemic therapy (outside of a clinical trial)"
-                },
-                "substances": {
-                    "type": "array",
-                    "items": {
-                        "allOf": [
-                            {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
-                            },
-                            {
-                                "oneOf": [
-                                    {
-                                        "required": ["code"],
-                                        "properties": {
-                                            "code": {
-                                                "allOf": [
-                                                    {
-                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
-                                                    },
-                                                    {
-                                                        "type": "object",
-                                                        "required": [
-                                                            "system",
-                                                            "code",
-                                                            "version"
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            "name": { "not": {} }
-                                        }
-                                    },
-                                    {
-                                        "required": ["name"],
-                                        "properties": {
-                                            "code": { "not": {} }
-                                        }
-                                    }
-                                ]
+                                },
+                                "then": {
+                                    "required": ["name"]
+                                }
                             }
                         ]
                     }
@@ -330,7 +231,8 @@
                             "is",
                             "iv",
                             "Z",
-                            "R"
+                            "R",
+                            "Z(FDA)"
                         ],
                         "description": "Additional references: evidence grading."
                     }
@@ -344,7 +246,128 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
+                            },
+                            {
+                                "description": "Identifier of a variant defined in OncologyMolecular."
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "identifier",
+                "register",
+                "name",
+                "id",
+                "evidenceLevel",
+                "priority"
+            ]
+        },
+        "RecommendedSystemicTherapy": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                   "$ref": "#/$defs/Common/properties/identifier"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "inLabel",
+                        "offLabel",
+                        "compassionateUse",
+                        "unknown",
+                        "secPreventive"
+                    ],
+                    "description": "Recommendation systemic therapy (outside of a clinical trial)"
+                },
+                "substances": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
+                                            },
+                                            {
+                                                "type": "object",
+                                                "description": "ATC code of active substance or pharmacological class",
+                                                "required": ["system", "code", "version"]
+                                            }
+                                        ]
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of active substance is required when only pharmacological class is given."
+                                    }
+                                },
+                                "required": ["code"],
+                                "if": {
+                                    "properties": {
+                                        "code": {
+                                            "properties": {
+                                                "code": {
+                                                    "not": {
+                                                        "pattern": "^[A-Z][0-9]{2}[A-Z]{2}[0-9]{2}$"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "required": ["name"]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "evidenceLevel": {
+                    "type": "string",
+                    "enum": [
+                        "m1A",
+                        "m1B",
+                        "m1C",
+                        "m2A",
+                        "m2B",
+                        "m2C",
+                        "m3",
+                        "m4",
+                        "undefined"
+                    ],
+                    "description": "Evidence level."
+                },
+                "evidenceLevelDetails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "is",
+                            "iv",
+                            "Z",
+                            "R",
+                            "Z(FDA)"
+                        ],
+                        "description": "Additional references: evidence grading."
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Prioritization."
+                },
+                "variants": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            {
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json"
                             },
                             {
                                 "description": "Identifier of a variant defined in OncologyMolecular."
@@ -359,15 +382,13 @@
                         "HO",
                         "IM",
                         "ZS",
+                        "CI",
+                        "CZ",
+                        "CIZ",
+                        "IZ",
                         "SZ",
                         "SO"
                     ]
-                },
-                "recommendedStudies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/RecommendedStudy"
-                    }
                 }
             },
             "required": [
@@ -375,7 +396,6 @@
                 "type",
                 "substances",
                 "evidenceLevel",
-                "evidenceLevelDetails",
                 "priority",
                 "therapeuticStrategy"
             ]

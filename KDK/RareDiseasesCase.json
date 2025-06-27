@@ -1,8 +1,11 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesCase",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesCase.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rare Diseases Data Schema",
   "type": "object",
+  "required": [
+	  "diagnosisRd"
+  ],
   "properties": {
     "diagnosisRd": {
      "$ref": "#/$defs/DiagnosisRd"
@@ -21,7 +24,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "type": "object",
@@ -33,13 +36,9 @@
                 }
               }
             ],
-            "required": ["code"]
+            "required": ["code",
+	    		 "version"]
           }
-        },
-        "hpoVersion": {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$",
-          "description": "Version HP Ontology in format x.y.z (e.g. 2.0.4)"
         },
         "symptomOnsetDate": {
           "type": "string",
@@ -60,12 +59,23 @@
           ],
           "description": "Diagnostics recommendation"
         },
+        "libraryType": {
+          "type": "string",
+          "enum": [
+            "panel",
+            "wes",
+            "wgs",
+            "wgs_lr",
+	    "none"
+          ],
+          "description": "Art der Sequenzierung oder none, falls keine Sequenzierung indiziert"
+         },
         "diagnosticAssessment": {
           "type": "string",
           "enum": [
             "noGeneticDiagnosis",
             "suspectedGeneticDiagnosis",
-            "furtherGeneticDiagnosisRecommended",
+            "furtherGeneticDiagnosticRecommended",
             "confirmedGeneticDiagnosis",
             "partialGeneticDiagnosis"
           ],
@@ -77,7 +87,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "required": [ "code", "system", "version" ]
@@ -104,10 +114,11 @@
       },
       "required": [
         "phenotypes",
-        "hpoVersion",
         "symptomOnsetDate",
         "molecularBoardDecisionDate",
         "diagnosticExtent",
+        "libraryType",
+        "diagnosticAssessment",
         "diagnoses"
       ]
     },
@@ -185,7 +196,8 @@
       },
       "required": [
         "genomicTestType",
-        "diagnosticAssessment",
+	"genomicStudyType",
+	"diagnosticResult",
         "hospitalizationPeriods",
         "hospitalizationDuration",
         "zseContactDate"

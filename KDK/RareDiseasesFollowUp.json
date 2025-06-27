@@ -1,7 +1,10 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/RareDiseasesFollowUp",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "required": [
+    "followUpRds"
+  ],
   "properties": {
     "followUpRds": {
       "type": "array",
@@ -20,7 +23,7 @@
               "description": "Phenotyping based on the HPO ontology.",
               "allOf": [
                 {
-                  "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                  "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                 }
               ],
               "properties": {
@@ -39,7 +42,7 @@
                   ]
                 }
               },
-              "required": ["code"]
+              "required": ["code", "change"]
             }
           },
           "gmfcs": {
@@ -76,6 +79,7 @@
         },
         "required": [
           "followUpDate",
+          "phenotypes",
           "diagnosisEstablished",
           "vitalStatus"
         ]
@@ -83,8 +87,5 @@
       "minItems": 1,
       "description": "For each of the several followups, a new object with the current status is created."
     }
-  },
-  "required": [
-    "followUpRds"
-  ]
+  }
 }

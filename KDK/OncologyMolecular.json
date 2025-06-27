@@ -1,5 +1,5 @@
 {
-  "$id": "https://www.bfarm.de/schemas/genomde/OncologyMolecular",
+  "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyMolecular.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Oncology Molecular Report",
   "description": "Schema for molecular report in oncology, including various variant types.",
@@ -57,7 +57,7 @@
           "description": "Gene symbol (HGNC) and HGNC ID. e.g., HGNC:1100",
           "allOf": [
             {
-              "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
             },
             {
               "required": [
@@ -78,7 +78,7 @@
         },
         "identifier": {
           "allOf": [
-            { "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Identifier#" },
+            { "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Identifier.json" },
             { "description": "Unique identifier for the variant." }
           ]
         }
@@ -97,10 +97,19 @@
           "$ref": "#/$defs/Common/properties/gene"
         },
         "transcriptId": {
-          "type": "string",
-          "description": "Transcript ID (Ensembl/RefSeq) with version. e.g., ENST00000644379.2"
-        },
-        "dnaChange": {
+          "allOf": [
+            {
+              "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
+            },
+            {
+              "required": [
+                "code",
+                "system"
+              ]
+            }
+          ]
+        },            
+          "dnaChange": {
           "type": "string",
           "description": "DNA level alteration (HGVSc)."
         },
@@ -108,12 +117,58 @@
           "type": "string",
           "description": "Protein level alteration (HGVSp)."
         },
+        "chromosome": {
+          "type": "string",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "X",
+            "Y",
+            "MT"
+          ]
+        },
+        "startPosition": {
+          "type": "integer",
+          "description": "Start coordinate in GRCh38 VCF-style."
+        },
+        "endPosition": {
+          "type": "integer",
+          "description": "End coordinate in GRCh38 VCF-style."
+        },
+        "ref": {
+          "type": "string",
+          "description": "ref sequence VCF-style."
+        },
+        "alt": {
+          "type": "string",
+          "description": "alt/observed sequence VCF-style."
+        },
         "variantTypes": {
           "type": "array",
           "items": {
             "allOf": [
               {
-                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
               },
               {
                 "required": [
@@ -135,6 +190,11 @@
         }
       },
       "required": [
+        "chromosome",
+        "startPosition",
+        "endPosition",
+        "ref",
+        "alt",
         "identifier",
         "genomicSource",
         "gene",
@@ -339,25 +399,21 @@
         "identifier": {
           "$ref": "#/$defs/Common/properties/identifier"
         },
-        "sbsVersion": {
+        "version": {
           "type": "string",
           "description": "SBS Signatures Version"
         },
-        "sbsSignatures": {
+        "name": {
           "type": "array",
           "description": "List of SBS Signatures. e.g. SBS 6",
           "items": {
             "type": "string"
           }
-        },
-        "sbsSignaturePresent": {
-          "type": "boolean",
-          "description": "SBS Signature present. **Note:** This boolean implies that there could be none. SBSsignatures is an array with 0..N, so this parameter is redundant and will be removed in the future."
         }
       },
       "required": [
         "identifier",
-        "sbsSignatures"
+        "name"
       ]
     },
     "Variant": {

@@ -1,5 +1,5 @@
 {
-    "$id": "https://www.bfarm.de/schemas/genomde/OncologyCase",
+    "$id": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/OncologyCase.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Oncology Case Data Schema",
     "type": "object",
@@ -27,7 +27,7 @@
                 "mainDiagnosis": {
                     "allOf": [
                         {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                         },
                         {
                             "type": "object",
@@ -53,7 +53,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                             },
                             {
                                 "type": "object",
@@ -98,7 +98,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                             },
                             {
                                 "required": [
@@ -116,7 +116,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                             },
                             {
                                 "type": "object",
@@ -136,7 +136,7 @@
                 "histology": {
                     "allOf": [
                         {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                         },
                         {
                             "required": [
@@ -151,7 +151,7 @@
                 "topography": {
                     "allOf": [
                         {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                         },
                         {
                             "required": [
@@ -189,7 +189,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                             },
                             {
                                 "type": "object",
@@ -209,14 +209,6 @@
                         ]
                     }
                 },
-                "tnmSystem": {
-                    "type": "string",
-                    "description": "TNM classification system. AJCC, UICC. **NOTE**: Might be removed/added to tnmClassification array in the next version."
-                },
-                "tnmVersion": {
-                    "type": "string",
-                    "description": "TNM classification version. **NOTE**: Might be removed/added to tnmClassification array in the next version."
-                },
                 "additionalClassification": {
                     "type": "array",
                     "description": "Handles cases for additional classification or where the TNM classification system (AJCC or UICC) is unknown. This provides a string alternative to the SNOMED CT coding of TNM, using a system 'TNM'.",
@@ -233,12 +225,23 @@
                         }
                     }
                 },
+                "libraryType": {
+                    "type": "string",
+                    "enum": [
+                        "panel",
+                        "wes",
+                        "wgs",
+                        "wgs_lr",
+                        "none"
+                    ],
+                    "description": "Art der Sequenzierung oder none, falls keine Sequenzierung indiziert"
+                },
                 "diagnosticAssessment": {
                     "type": "string",
                     "enum": [
                         "noGeneticDiagnosis",
                         "suspectedGeneticDiagnosis",
-                        "furtherGeneticDiagnosisRecommended",
+                        "furtherGeneticDiagnosticRecommended",
                         "confirmedGeneticDiagnosis",
                         "partialGeneticDiagnosis"
                     ],
@@ -251,7 +254,7 @@
                 "germlineDiagnosisConfirmed",
                 "histology",
                 "topography",
-                "diagnosticAssessment"
+                "libraryType"
             ]
         },
         "PriorDiagnostic": {
@@ -297,7 +300,7 @@
                     "description": "Gene display: Gene symbol (HGNC); BRAF. Gene code: HGNC ID; zB HGNC:1100",
                     "allOf": [
                         {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                         },
                         {
                             "required": [
@@ -310,7 +313,7 @@
                 "transcript": {
                     "allOf": [
                         {
-                            "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                            "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                         },
                         {
                             "required": [
@@ -333,7 +336,7 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
                             },
                             {
                                 "required": [
@@ -349,7 +352,6 @@
             },
             "required": [
                 "gene",
-                "transcript",
                 "dnaChange"
             ]
         },
@@ -376,45 +378,57 @@
                     ]
                 },
                 "substances": {
-                    "type": "array",
-                    "items": {
-                        "allOf": [
-                            {
-                                "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Substance#"
-                            },
-                            {
-                                "oneOf": [
-                                    {
-                                        "required": ["code"],
-                                        "properties": {
-                                            "code": {
-                                                "allOf": [
-                                                    {
-                                                        "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
-                                                    },
-                                                    {
-                                                        "type": "object",
-                                                        "required": [
-                                                            "system",
-                                                            "code",
-                                                            "version"
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            "name": { "not": {} }
-                                        }
-                                    },
-                                    {
-                                        "required": ["name"],
-                                        "properties": {
-                                            "code": { "not": {} }
-                                        }
-                                    }
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Substance.json"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "allOf": [
+                              {
+                                "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
+                              },
+                              {
+                                "type": "object",
+                                "description": "ATC code of active substance or pharmacological class",
+                                "required": [
+                                  "system",
+                                  "code",
+                                  "version"
                                 ]
+                              }
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of active substance is required when only pharmacological class is given."
+                          }
+                        },
+                        "if": {
+                          "properties": {
+                            "code": {
+                              "properties": {
+                                "code": {
+                                  "not": {
+                                    "pattern": "^[A-Z][0-9]{2}[A-Z]{2}[0-9]{2}$"
+                                  }
+                                }
+                              }
                             }
-                        ]
-                    }
+                          }
+                        },
+                        "then": {
+                          "required": [
+                            "name"
+                          ]
+                        }
+                      }
+                    ]
+                  }
                 },
                 "therapyStartDate": {
                     "type": "string",
