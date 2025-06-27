@@ -156,7 +156,8 @@
 - **RareDiseasesPlan**
   - Change `RecommendedStudy.variants` to only include `identifier`.
 - **Submission**
-  - Renamed ``inclusionBoardDecisionDate`` to ``molecularBoardDecisionDate``.
+  - Renamed `inclusionBoardDecisionDate` to `molecularBoardDecisionDate`.
+  - Add `Not required in cases where diagnosisOd.libraryType = "none".` to `description` of `diagnosisOd.genomicCentreId` and removed it from required properties.
 ### Fixed
 - **OncologyCase** 
   - Renamed enum value of `diagnosticAssessment` from `furtherGeneticDiagnosisRecommended` to `furtherGeneticDiagnosticRecommended`.
