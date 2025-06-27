@@ -61,7 +61,7 @@
           "clinicalDataNodeId",
           "diseaseType"
         ]
-      },
+    },
     "mvConsent": {
       "type": "object",
       "properties": {
