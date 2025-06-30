@@ -182,10 +182,6 @@
                                                 "required": ["system", "code", "version"]
                                             }
                                         ]
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "Name of active substance is required when only pharmacological class is given."
                                     }
                                 },
                                 "if": {
@@ -202,7 +198,13 @@
                                     }
                                 },
                                 "then": {
-                                    "required": ["name"]
+                                    "required": ["name"],
+                                    "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of active substance is required when only pharmacological class is given."
+                                        }
+                                    }
                                 }
                             }
                         ]
@@ -302,10 +304,6 @@
                                                 "required": ["system", "code", "version"]
                                             }
                                         ]
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "description": "Name of active substance is required when only pharmacological class is given."
                                     }
                                 },
                                 "required": ["code"],
@@ -323,7 +321,13 @@
                                     }
                                 },
                                 "then": {
-                                    "required": ["name"]
+                                    "required": ["name"],
+                                    "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of active substance is required when only pharmacological class is given."
+                                        }
+                                    }
                                 }
                             }
                         ]
