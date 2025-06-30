@@ -1,0 +1,105 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  AJVOPTS: --spec=draft2020 -c ajv-formats --strict --strict-types=false
+
+tasks:
+  default:
+    desc: Show all existing tasks
+    cmds:
+      - task --list-all
+    silent: true
+
+  install:
+    desc: Install ajv and ajv-formats packages, required for linting schema
+    prompt: This command will install npm packages GLOBALLY! It will run `npm install -g ajv ajv-formats. Are you sure?`
+    cmds:
+      - npm install -g ajv ajv-formats
+
+  sub:
+    desc: Lint the Submission.json package
+    cmds:
+      - |
+        ajv compile -s Submission.json \
+        -r "data-types/*.json" \
+        {{.AJVOPTS}}
+
+  # --- Rare Diseases
+  rare:
+    desc: Lint the RareDiseases.json package
+    cmds:
+      - |
+        ajv compile -s RareDiseases.json \
+        -r Submission.json \
+        -r RareDiseasesCase.json \
+        -r RareDiseasesMolecular.json \
+        -r RareDiseasesPlan.json \
+        -r RareDiseasesFollowUp.json \
+        -r "data-types/*.json" \
+        {{.AJVOPTS}}
+
+  all-rare:
+    desc: Lint all RareDiseases subschemata individually
+    cmds:
+      - for: ['RareDiseasesCase.json', 'RareDiseasesFollowUp.json', 'RareDiseasesMolecular.json', 'RareDiseasesPlan.json' ]
+        cmd: |
+            ajv compile -s {{.ITEM}} \
+            -r "data-types/*.json" \
+            {{.AJVOPTS}}
+
+  val-with-rare:
+    desc: "Validate FILE against RareDiseases.json schema. USAGE: task val-with-rare FILE=<file.json>"
+    requires:
+      vars: [FILE]
+    cmds:
+      - |
+        ajv validate -s RareDiseases.json \
+        -r Submission.json \
+        -r RareDiseasesCase.json \
+        -r RareDiseasesMolecular.json \
+        -r RareDiseasesPlan.json \
+        -r RareDiseasesFollowUp.json \
+        -r "data-types/*.json" \
+        -d {{.FILE}} \
+        {{.AJVOPTS}}
+
+  # --- Oncology
+  onco:
+    desc: Lint the OncologyCase.json package
+    cmds:
+      - |
+        ajv compile -s Oncology.json \
+        -r Submission.json \
+        -r OncologyCase.json \
+        -r OncologyMolecular.json \
+        -r OncologyPlan.json \
+        -r OncologyFollowUp.json \
+        -r "data-types/*.json" \
+        {{.AJVOPTS}}
+
+  all-onco:
+    desc: Lint all Oncology subschemata individually.
+    cmds:
+      - for: ['OncologyCase.json', 'OncologyFollowUp.json', 'OncologyMolecular.json', 'OncologyPlan.json' ]
+        cmd: |
+            ajv compile -s {{.ITEM}} \
+            -r "data-types/*.json" \
+            {{.AJVOPTS}}
+
+  val-with-onco:
+    desc: "Validate FILE against Oncology.json schema. USAGE: task val-with-onco FILE=<file.json>"
+    requires:
+      vars: [FILE]
+    cmds:
+      - |
+        ajv validate -s Oncology.json \
+        -r Submission.json \
+        -r OncologyCase.json \
+        -r OncologyMolecular.json \
+        -r OncologyPlan.json \
+        -r OncologyFollowUp.json \
+        -r "data-types/*.json" \
+        -d {{.FILE}} \
+        {{.AJVOPTS}}
