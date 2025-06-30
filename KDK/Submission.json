@@ -53,7 +53,8 @@
               "hereditary"
             ],
             "description": "Type of disease (must be oncological or hereditary for Oncology object, rare for RareDiseasesObject)"
-          },
+          }
+        },
         "required": [
           "date",
           "type",
@@ -206,7 +207,6 @@
         "otherReason"
       ],
       "description": "Reason for the negative decision"
-    }
     }
   }
 }
