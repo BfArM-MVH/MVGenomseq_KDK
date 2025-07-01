@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "code": {
-      "$ref": "https://www.bfarm.de/schemas/genomde/data-types/Coding#"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/data-types/Coding.json"
     },
     "name": {
       "type": "string"

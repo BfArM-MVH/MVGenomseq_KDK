@@ -9,19 +9,19 @@
   ],
   "properties": {
     "metaData": {
-      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Submission.json"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/Submission.json"
     },
     "case": {
-      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesCase.json"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesCase.json"
     },
     "molecular": {
-      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular.json"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesMolecular.json"
     },
     "plan": {
-      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesPlan.json"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesPlan.json"
     },
     "followUp": {
-      "$ref": "hhttps://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp.json"
+      "$ref": "https://raw.githubusercontent.com/BfArM-MVH/MVGenomseq_KDK/main/KDK/RareDiseasesFollowUp.json"
     }
   }
 }
