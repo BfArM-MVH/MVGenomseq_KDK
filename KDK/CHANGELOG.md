@@ -1,4 +1,23 @@
 # Changelog
+## [1.6.5] - 2025-07-07
+### Changed
+- **OncologyCase**
+  - Changed `priorDiagnostics` to array
+- **RareDiseasesCase** 
+  - Changed `PriorRds` to array
+- **RareDiseasesPlan**
+  - Renamed `variantReferences` to `variants` according to the documentation
+### Fixed
+- **RareDiseases**
+  - Fixed bad links
+- **Submission**
+  - Fixed syntax error
+- **Substance**
+  - Fixed bad links
+### Removed
+- **OncologyMolecular**
+  - Removed `transcriptId` from `SmallVariant` required properties
+# Changelog
 ## [1.6.4] - 2025-06-06
 ### Added
 - **Oncology**

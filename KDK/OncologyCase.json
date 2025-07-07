@@ -10,8 +10,11 @@
         "diagnosisOd": {
             "$ref": "#/$defs/DiagnosisOd"
         },
-        "priorDiagnostic": {
-            "$ref": "#/$defs/PriorDiagnostic"
+        "priorDiagnostics": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/PriorDiagnostic"
+            }
         },
         "priorProcedures": {
             "type": "array",
