@@ -1,4 +1,8 @@
 # Changelog
+## [1.6.6] - 2025-07-14
+### Added
+- Added `test` to `submissionType` in `Submission` and `Modellvorhaben_SubmissionSchema`.
+# Changelog
 ## [1.6.5] - 2025-07-07
 ### Changed
 - **OncologyCase**

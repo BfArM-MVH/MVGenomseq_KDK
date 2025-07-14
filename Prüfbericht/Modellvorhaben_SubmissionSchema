@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "SubmissionSummary",
-    "description": "Prüfbericht Datenablieferung Modellvorhaben V0.3 vom 25.03.2025",
+    "description": "Prüfbericht Datenablieferung Modellvorhaben V0.4 vom 14.07.2025",
     "type": "object",
     "properties": {
         "SubmittedCase": {
