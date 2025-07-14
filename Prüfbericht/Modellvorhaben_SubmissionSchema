@@ -14,12 +14,13 @@
                 },
                 "submissionType": {
                     "type": "string",
-                    "description": "\"initial\" Erstmeldung, \"followup"\ Verlaufsmeldung, \"addition\" Nachmeldung, \"correction\" Korrektur **** maybe use http://hl7.org/fhir/diagnostic-report-status",
+                    "description": "\"initial\" Erstmeldung, \"followup"\ Verlaufsmeldung, \"addition\" Nachmeldung, \"correction\" Korrektur\"test\" Testmeldung **** maybe use http://hl7.org/fhir/diagnostic-report-status",
                     "enum": [
                         "initial",
 			"followup",
                         "addition",
-                        "correction"
+                        "correction",
+                        "test"
                     ]
                 },
                 "tan": {
