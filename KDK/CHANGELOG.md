@@ -1,4 +1,8 @@
 # Changelog
+## [1.7.1] - 2025-09-05
+### Added
+- **Submission**
+  - Added `researchConsents` to required properties.
 ## [1.7.0] - 2025-08-21
 ### Added
 - **Submission**
