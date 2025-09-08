@@ -8,10 +8,13 @@
   ],
   "properties": {
     "diagnosisRd": {
-     "$ref": "#/$defs/DiagnosisRd"
+      "$ref": "#/$defs/DiagnosisRd"
     },
-    "priorRd": {
-     "$ref": "#/$defs/PriorRd"
+    "priorRds": {
+      "type": "array",
+      "items": { 
+        "$ref": "#/$defs/PriorRd"
+      }
     }
   },
   "$defs": {

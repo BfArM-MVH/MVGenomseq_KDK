@@ -198,7 +198,6 @@
         "identifier",
         "genomicSource",
         "gene",
-        "transcriptId",
         "dnaChange",
         "localization"
       ]

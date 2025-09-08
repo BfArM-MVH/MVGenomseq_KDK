@@ -26,12 +26,13 @@
           },
           "type": {
             "type": "string",
-            "description": "The options are: 'initial' for first submission, 'followup' is for followup submissions, 'addition' for additional submission, 'correction' for correction",
+            "description": "The options are: 'initial' for first submission, 'followup' is for followup submissions, 'addition' for additional submission, 'correction' for correction, 'test' is for technical testing of submissions",
             "enum": [
               "initial",
               "followup",
               "addition",
-              "correction"
+              "correction",
+              "test"
             ]
           },
           "submitterId": {
@@ -54,7 +55,8 @@
               "hereditary"
             ],
             "description": "Type of disease (must be oncological or hereditary for Oncology object, rare for RareDiseasesObject)"
-          },
+          }
+        },  
         "required": [
           "date",
           "type",
@@ -222,7 +224,6 @@
         "otherReason"
       ],
       "description": "Reason for the negative decision"
-    }
     }
   }
 }
