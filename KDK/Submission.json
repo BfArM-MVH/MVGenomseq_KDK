@@ -7,6 +7,7 @@
     "submission",
     "coverageType",
     "mvConsent",
+    "researchConsents",
     "tanC",
     "gender",
     "birthDate",
@@ -124,8 +125,7 @@
       "items":{
         "type":"object",
         "required":[
-          "schemaVersion",
-          "scope"
+          "presentationDate"
         ],
         "properties":{
           "schemaVersion":{
@@ -143,8 +143,24 @@
           "scope":{
             "type":"object",
             "description":"Scope of the research consent in JSON format following the MII IG Consent v2025 FHIR schema. See 'https://www.medizininformatik-initiative.de/Kerndatensatz/KDS_Consent_V2025/MII-IG-Modul-Consent.html' and 'https://packages2.fhir.org/packages/de.medizininformatikinitiative.kerndatensatz.consent'."
+          },
+          "noScopeJustification": {
+            "type": "string",
+            "description": "Justification if no scope object is present.",
+            "enum": [
+              "patient unable to consent",
+              "patient refuses to sign consent",
+              "patient did not return consent documents",
+              "other patient-related reason",
+              "consent information cannot be submitted by LE due to technical reason",
+              "consent is not implemented at LE due to organizational issues"
+            ]
           }
-        }
+        },
+        "oneOf": [
+          {"required":["scope"]},
+          {"required":["noScopeJustification"]}
+        ]
       }
     },
     "coverageType": {
@@ -211,3 +227,5 @@
     }
   }
 }
+
+

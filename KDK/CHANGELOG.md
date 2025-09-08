@@ -1,8 +1,18 @@
 # Changelog
+## [1.7.1] - 2025-09-05
+### Added
+- **Submission**
+  - Added `researchConsents` to required properties.
+## [1.7.0] - 2025-08-21
+### Added
+- **Submission**
+  - Added `noScopeJustification` to `researchConsents`.
+### Changed
+- **Submission**
+  - Changed `researchConsents` requiered properties to `presentationDate` and either `scope` or `noScopeJustification`.
 ## [1.6.6] - 2025-07-14
 ### Added
 - Added `test` to `submissionType` in `Submission` and `Modellvorhaben_SubmissionSchema`.
-# Changelog
 ## [1.6.5] - 2025-07-07
 ### Changed
 - **OncologyCase**
@@ -21,7 +31,6 @@
 ### Removed
 - **OncologyMolecular**
   - Removed `transcriptId` from `SmallVariant` required properties
-# Changelog
 ## [1.6.4] - 2025-06-06
 ### Added
 - **Oncology**
