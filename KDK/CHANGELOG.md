@@ -1,4 +1,10 @@
 # Changelog
+## [1.7.2] - 2026-03-18
+### Fixed
+- **RareDiseases**
+  - Fixed malformed `$id` URI (double `h` in `hhttps://`)
+- **RareDiseasesFollowUp**
+  - Harmonised `deathDate` YYYY-MM regex to use `[0-9]` instead of `\\d`, consistent with all other date-pattern fields
 ## [1.7.1] - 2025-09-05
 ### Added
 - **Submission**
