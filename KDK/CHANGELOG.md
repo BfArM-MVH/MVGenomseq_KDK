@@ -1,4 +1,14 @@
-# Changelog
+# Changelog 
+## [Unreleased] 
+- **Submission** 
+  - harmonised pattern string of `tanC` 
+  - added pattern for `addressAGS`
+- **OncologyCase** 
+  - `variantTypes` is now required with `minItems: 1`
+- **OncologyPlan** 
+  - fixed typo: `interventionIsRiskReducing` (singular)
+- **OncologyFollowUp** 
+  - added `system` to required fields in `additionalDiagnoses[]` to match **OncologyCase** 
 ## [1.7.2] - 2026-03-18
 ### Fixed
 - **RareDiseases**

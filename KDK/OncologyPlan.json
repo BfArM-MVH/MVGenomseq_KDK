@@ -71,7 +71,7 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "interventionsIsRiskReducing": {
+                            "interventionIsRiskReducing": {
                                 "type": "boolean"
                             },
                             "interventionIsTherapeutic": {

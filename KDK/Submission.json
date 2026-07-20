@@ -181,7 +181,8 @@
     },
     "tanC": {
       "type": "string",
-      "description": "Transaction number VNk"
+      "description": "Transaction number VNk", 
+      "pattern": "^[a-fA-F0-9]{64}$"
     },
     "localCaseId":{
       "type":"string",
@@ -203,7 +204,8 @@
     },
     "addressAGS": {
         "type": "string",
-        "description": "Official municipal code of the patient's residence."
+        "description": "Official municipal code of the patient's residence.", 
+        "pattern": "^[0-9]{5}$"
     },
     "decisionToInclude": {
       "type": "boolean",

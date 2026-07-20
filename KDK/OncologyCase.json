@@ -349,13 +349,15 @@
                                 ]
                             }
                         ]
-                    },
+                    }, 
+                    "minItems": 1, 
                     "description": "Attribute values should be derived from the Sequence Ontology. Refer to the specific subset under 'sequence_variant' at http://www.sequenceontology.org/miso for allowed codes."
                 }
             },
             "required": [
                 "gene",
-                "dnaChange"
+                "dnaChange", 
+                "variantTypes"
             ]
         },
         "PriorProcedure": {
