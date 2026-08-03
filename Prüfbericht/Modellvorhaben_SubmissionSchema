@@ -17,7 +17,7 @@
                     "description": "\"initial\" Erstmeldung, \"followup"\ Verlaufsmeldung, \"addition\" Nachmeldung, \"correction\" Korrektur\"test\" Testmeldung **** maybe use http://hl7.org/fhir/diagnostic-report-status",
                     "enum": [
                         "initial",
-			"followup",
+						"followup",
                         "addition",
                         "correction",
                         "test"
@@ -25,7 +25,8 @@
                 },
                 "tan": {
                     "type": "string",
-                    "description": "T-VNk oder T-VNg: 32 Byte hexadezimal Großschreibung? Zufallswert; kollisionsfrei innerhalb eines LEs; "
+                    "description": "T-VNk oder T-VNg: 32 Byte hexadezimal Großschreibung? Zufallswert; kollisionsfrei innerhalb eines LEs",
+                    "pattern": "^[a-fA-F0-9]{64}$"
                 },
                 "submitterId": {
                     "type": "string",
@@ -35,15 +36,15 @@
                     "type": "string",
                     "description": "Id des klinischen Datenknotens bzw. GRZ mit den zugeordneten klinischen Daten, Format KDKXXXnnn/GRZXXXnnn 9-stellig vom BfArM vergeben"
                 },
-		"diseaseType": {
-		    "type": "string",
-		    "description": "Art der Erkrankung: OE, SE, ET",
-		    "enum": [
-			"oncological",
-			"rare",
-			"hereditary"
-		    ]
-		},
+				"diseaseType": {
+		    		"type": "string",
+		    		"description": "Art der Erkrankung: OE, SE, ET",
+		    		"enum": [
+						"oncological",
+						"rare",
+						"hereditary"
+		    		]
+				},
                 "dataCategory": {
                     "type": "string",
                     "description": "Klinisch/Genomisch",
@@ -60,7 +61,7 @@
                         "wes",
                         "wgs",
                         "wgs_lr",
-			"none"
+						"none"
                     ]
                 },
                 "coverageType": {
@@ -82,7 +83,12 @@
                 "dataQualityCheckPassed": {
                     "type": "boolean",
                     "description": "Lokale Datenqualitätsprüfung nach Vorgaben bestandem"
-                }
+                },
+				"confirmationId": {
+					"type": "string",
+					"description": "Alphanumerische ID der Meldebestätigung zur Initialmeldung des Falls.",
+
+				}
             },
             "required": [
                 "submissionDate",
@@ -90,13 +96,13 @@
                 "tan",
                 "submitterId",
                 "dataNodeId",
-		"diseaseType",
-		"dataCategory",
-		"libraryType",
-		"coverageType",
-		"dataQualityCheckPassed"
+				"diseaseType",
+				"dataCategory",
+				"libraryType",
+				"coverageType",
+				"dataQualityCheckPassed"
             ]
-	}
+		}
     },
     "required": [
         "SubmittedCase"
