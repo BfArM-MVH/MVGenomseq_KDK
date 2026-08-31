@@ -3,6 +3,7 @@
 - **Submission** 
   - harmonised pattern string of `tanC` 
   - added pattern for `addressAGS`
+  - added field `confirmationId`
 - **OncologyCase** 
   - `variantTypes` is now required with `minItems: 1`
 - **OncologyPlan** 
