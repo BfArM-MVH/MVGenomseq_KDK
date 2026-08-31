@@ -188,6 +188,10 @@
       "type":"string",
       "description":"A local case identifier of the Leistungserbringer to be able to track multiple submissions referring to the same index patient"
     },
+    "confirmationId": {
+      "type": "string",
+      "description": "Alphanumeric ID of the Meldebestätigung of the inital submission."
+    },
     "gender": {
       "type": "string",
       "enum": [
